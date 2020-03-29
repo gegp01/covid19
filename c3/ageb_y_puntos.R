@@ -12,11 +12,11 @@ setwd("mi directorio")
 loc<- readOGR(dsn = "urbrloc10gw/", layer = "urbrloc10gw")
 
 # DETERMINAR LA PROYECCION ADECUADA (WGS84)
-#projection(loc) = CRS("+proj=longlat +datum=WGS84")
+#projection(loc) = CRS("+proj=longlat +datum=WGS84") # NO SE USA SI LA PROYECCION ES ADECUADA
 
 # LEER EL SHAPEFILE CON POLIGONOS EN EL DIRECTORIO: /ageb_mex/
-ageb <- readOGR(dsn = "ageb_mex/", layer = "ageb_mex")
-#projection(ageb) = CRS("+proj=longlat +datum=WGS84") # ASIGNAR LA PROYECCIÓN GEODESICA WGS84
+ageb <- readOGR(dsn = "ageb_mex/", layer = "ageb_mex") 
+#projection(ageb) = CRS("+proj=longlat +datum=WGS84") # ASIGNAR LA PROYECCIÓN GEODESICA WGS84 | NO SE USA SI LA PROYECCION ES ADECUADA
 
 # CRUZAR LA INFORMACIÓN
 loc_in_ageb <- over(loc,ageb)
