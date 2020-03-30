@@ -56,4 +56,12 @@ write.csv(pobl.rural.ageb, "pobl-rural-ageb.csv")
 write.csv(pobl.rural.entidad, "pobl-rural-entidad.csv")
 write.csv(pobl.rural.municipio, "pobl-rural-municipio.csv")
 
+# HACER INDICE DE AGEB, MUNICIPIO Y ENTIDAD + DATOS DE POBTOT
+idx<-data.frame(ENTIDAD=loc.rural$NOM_ENT
+                , CVE_EDO=loc.rural$CVE_EDO
+                , CVE_MUN=loc.rural$ageb.CVE_MUN
+                , CVE_AGEB=loc.rural$ageb.CVE_AGEB
+                , POBTOT=loc.rural$POBTOT)
+
+write.csv(idx, "indice_POBTOT.csv", row.names=F)
 
