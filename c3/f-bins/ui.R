@@ -22,7 +22,8 @@ ui<-(shinyUI(fluidPage(theme=shinytheme("spacelab"),
                            ),
                            
                            mainPanel(
-                               plotOutput("plot")
+                             HTML("<p>Nota: El archivo csv debe tener nombre en todas las columnas.</p>")
+                               , plotOutput("plot")
                                , tableOutput('bins')
 
                                
