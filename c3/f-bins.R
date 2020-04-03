@@ -60,4 +60,4 @@ f.bins<-function(X, z, n){
              , valores=X.bins[,2]
              , decil=X.bins[,3])
 }
-# 
+## 
