@@ -56,5 +56,8 @@ f.bins<-function(X, z, n){
              , proyecto
              , especievalida
              , latitud
-             , longitud)
+             , longitud
+             , valores=X.bins[,2]
+             , decil=X.bins[,3])
 }
+# 
