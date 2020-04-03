@@ -6,7 +6,7 @@
 # i nivel: entidad (ent), municipio (mun)
 
 f.bins<-function(X, z, n){
-  X.aggregate<-aggregate(X[z], list(X[,n]), sum)
+  X.aggregate<-aggregate(X[z], list(X[,n]), mean)
   X.bins<-within(X.aggregate, decil <- as.integer(cut(X.aggregate[,z], quantile(X.aggregate[,z], probs=0:10/10), include.lowest=TRUE)))
 
   estadomapa<-X.bins
