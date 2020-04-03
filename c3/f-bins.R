@@ -21,7 +21,7 @@ f.bins<-function(X, z, n){
   valor.min<-valor.min[match(X.bins$decil, valor.min$Group.1),2]
   valor.max<-valor.max[match(X.bins$decil, valor.max$Group.1),2]
   
-  especievalida<-paste(z, "(", round(valor.min, 2), "% - ", round(valor.max,2), "%)", sep="")
+  especievalida<-paste(z, "(", round(valor.min, 1)*100, "% - ", round(valor.max,1)*100, "%)", sep="")
   
   clasevalida<-rep("INEGI 2010", nrow(X.bins))
   familiavalida<-rep("Indicadores de Población", nrow(X.bins))
