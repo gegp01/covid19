@@ -8,16 +8,17 @@
 f.bins<-function(X, z, n){
   X.aggregate<-aggregate(X[z], list(X[,n]), mean)
   X.bins<-within(X.aggregate, decil <- as.integer(cut(X.aggregate[,z], quantile(X.aggregate[,z], probs=0:10/10), include.lowest=TRUE)))
-
-  estadomapa<-X.bins
+  
+#  estadomapa<-X.bins[,1]
+  estadomapa<-X$nom_ent[match(as.vector(X.bins$Group.1), as.vector(X[,n]))]
   latitud<-X$latitud[match(as.vector(X.bins$Group.1), as.vector(X[,n]))]
   longitud<-X$longitud[match(as.vector(X.bins$Group.1), as.vector(X[,n]))]
   altitud<-X$altitud[match(as.vector(X.bins$Group.1), as.vector(X[,n]))]
   altitud<-ifelse(is.numeric(altitud)==T, altitud, 9999)
   
   estadomapa<-X$nom_ent[match(as.vector(X.bins$Group.1), as.vector(X[,n]))]
-  ordenvalido<-as.vector(X.bins$Group.1)
-
+#  ordenvalido<-as.vector(X.bins$Group.1)
+  
   valor.min<-aggregate(X.bins[,z], list(X.bins$decil), min)
   valor.max<-aggregate(X.bins[,z], list(X.bins$decil), max)
   valor.min<-valor.min[match(X.bins$decil, valor.min$Group.1),2]
@@ -28,16 +29,21 @@ f.bins<-function(X, z, n){
   clasevalida<-rep("INEGI 2010", nrow(X.bins))
   familiavalida<-rep("Indicadores de Población", nrow(X.bins))
   diacolecta<-rep(1, nrow(X.bins))
+  ordenvalido<-rep(NA, nrow(X.bins))
   mescolecta<-rep(1, nrow(X.bins))
   aniocolecta<-rep(2010, nrow(X.bins))
   idejemplar<-rep("COVID-19", nrow(X.bins))
-  generovalido<-rep(z, nrow(X.bins))
+#  generovalido<-rep(z, nrow(X.bins))
+  generovalido<-X.bins[,1]
   paismapa<-rep("México", nrow(X.bins))
   altitudmapa<-altitud
   reinovalido<-rep("Municipio", nrow(X.bins))
   phylumdivisionvalido<-rep("Demográfico", nrow(X.bins))
-  categoriainfraespecievalida<-rep(z, nrow(X.bins))
+#  categoriainfraespecievalida<-rep(z, nrow(X.bins))
+  categoriainfraespecievalida<-rep(NA, nrow(X.bins))
   proyecto<-rep("EPI-SPECIES", nrow(X.bins))
+  
+  
   
   data.frame(estadomapa
              , ordenvalido
