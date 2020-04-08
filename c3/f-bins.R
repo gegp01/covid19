@@ -43,8 +43,8 @@ f.bins<-function(X, z, n){
   mescolecta<-rep(1, nrow(X.bins))
   aniocolecta<-rep(2010, nrow(X.bins))
   idejemplar<-rep("COVID-19", nrow(X.bins))
-#  generovalido<-rep(z, nrow(X.bins))
-  generovalido<-X.bins[,1]
+  generovalido<-rep(z, nrow(X.bins))
+# generovalido<-X.bins[,1]
   paismapa<-rep("México", nrow(X.bins))
   altitudmapa<-altitud
   reinovalido<-rep("Demográficos", nrow(X.bins))
