@@ -5,6 +5,8 @@
 # z nombre de la variable en X
 # i nivel: entidad (ent), municipio (mun)
 
+d<-read.csv("https://gegp01.github.io/covid19/c3/diccionario.csv") # diccionario de variables
+
 f.bins<-function(X, z, n){
   X.aggregate<-aggregate(X[z], list(X[,n]), mean)
   X.bins<-within(X.aggregate, decil <- as.integer(cut(X.aggregate[,z], quantile(X.aggregate[,z], probs=0:10/10), include.lowest=TRUE)))
@@ -24,12 +26,19 @@ f.bins<-function(X, z, n){
   valor.min<-valor.min[match(X.bins$decil, valor.min$Group.1),2]
   valor.max<-valor.max[match(X.bins$decil, valor.max$Group.1),2]
   
-  especievalida<-paste(z, " (", round(valor.min, 4)*100, "%-", round(valor.max,4)*100, "%)", sep="")
+#  especievalida<-paste(z, " (", round(valor.min, 4)*100, "%-", round(valor.max,4)*100, "%)", sep="")
+  especievalida<-paste(round(valor.min, 3)*100, "%:", round(valor.max,3)*100, "%", sep="")
   
-  clasevalida<-rep("INEGI 2010", nrow(X.bins))
-  familiavalida<-rep("Indicadores de Población", nrow(X.bins))
+  clasevalida<-rep("Variables para todas las localidades habitadas", nrow(X.bins))
+  
+  nms.d<-tolower(d$variable.1)
+  d$variable.1[match(nms.X, nms.d)]
+  familiavalida<-rep(d$familia[match(z, nms.d)], nrow(X.bins))
+#  familiavalida<-rep("Población", nrow(X.bins))
+  
+  
   diacolecta<-rep(1, nrow(X.bins))
-  ordenvalido<-rep(NA, nrow(X.bins))
+  ordenvalido<-rep("Indicadores de Poblacion y Vivienda", nrow(X.bins))
   mescolecta<-rep(1, nrow(X.bins))
   aniocolecta<-rep(2010, nrow(X.bins))
   idejemplar<-rep("COVID-19", nrow(X.bins))
@@ -37,8 +46,8 @@ f.bins<-function(X, z, n){
   generovalido<-X.bins[,1]
   paismapa<-rep("México", nrow(X.bins))
   altitudmapa<-altitud
-  reinovalido<-rep("Municipio", nrow(X.bins))
-  phylumdivisionvalido<-rep("Demográfico", nrow(X.bins))
+  reinovalido<-rep("Demográficos", nrow(X.bins))
+  phylumdivisionvalido<-rep("Censo de Poblacion y Vivienda 2010", nrow(X.bins))
 #  categoriainfraespecievalida<-rep(z, nrow(X.bins))
   categoriainfraespecievalida<-rep(NA, nrow(X.bins))
   proyecto<-rep("EPI-SPECIES", nrow(X.bins))
@@ -66,4 +75,5 @@ f.bins<-function(X, z, n){
              , valores=X.bins[,2]
              , decil=X.bins[,3])
 }
+
 ## 
