@@ -27,7 +27,7 @@ f.bins<-function(X, z, n){
   valor.max<-valor.max[match(X.bins$decil, valor.max$Group.1),2]
   
 #  especievalida<-paste(z, " (", round(valor.min, 4)*100, "%-", round(valor.max,4)*100, "%)", sep="")
-  especievalida<-paste(round(valor.min, 3)*100, "%:", round(valor.max,3)*100, "%", sep="")
+  especievalida<-paste(round(valor.min, 4)*100, "%:", round(valor.max,4)*100, "%", sep="")
   
   clasevalida<-rep("Variables para todas las localidades habitadas", nrow(X.bins))
   
