@@ -27,15 +27,16 @@ f.bins<-function(X, z, n){
   valor.max<-valor.max[match(X.bins$decil, valor.max$Group.1),2]
   
 #  especievalida<-paste(z, " (", round(valor.min, 4)*100, "%-", round(valor.max,4)*100, "%)", sep="")
-  especievalida<-paste(round(valor.min, 4)*100, "%:", round(valor.max,4)*100, "%", sep="")
+  especievalida<-paste(round(valor.min, 3)*100, "%:", round(valor.max,3)*100, "%", sep="")
   
   clasevalida<-rep("Variables para todas las localidades habitadas", nrow(X.bins))
   
   nms.d<-tolower(d$variable.1)
-  d$variable.1[match(nms.X, nms.d)]
+#  d$variable.1[match(nms.X, nms.d)]
   familiavalida<-rep(d$familia[match(z, nms.d)], nrow(X.bins))
 #  familiavalida<-rep("Población", nrow(X.bins))
   
+  describe<-d$descripcion[match(z, nms.d)]
   
   diacolecta<-rep(1, nrow(X.bins))
   ordenvalido<-rep("Indicadores de Poblacion y Vivienda", nrow(X.bins))
@@ -49,7 +50,7 @@ f.bins<-function(X, z, n){
   reinovalido<-rep("Demográficos", nrow(X.bins))
   phylumdivisionvalido<-rep("Censo de Poblacion y Vivienda 2010", nrow(X.bins))
 #  categoriainfraespecievalida<-rep(z, nrow(X.bins))
-  categoriainfraespecievalida<-rep(NA, nrow(X.bins))
+  categoriainfraespecievalida<-rep(describe, nrow(X.bins))
   proyecto<-rep("EPI-SPECIES", nrow(X.bins))
   
   
@@ -75,5 +76,4 @@ f.bins<-function(X, z, n){
              , valores=X.bins[,2]
              , decil=X.bins[,3])
 }
-
 ## 
