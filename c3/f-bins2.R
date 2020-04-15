@@ -1,9 +1,15 @@
 
+mun<-read.csv("https://gegp01.github.io/covid19/c3/municipios_cve_latlon.csv") # diccionario de variables
+
 f.bins<-function(X, z, n){
   X.aggregate<-aggregate(X[z], list(X[,n]), sum)
   X.bins<-within(X.aggregate, decil <- as.integer(cut(X.aggregate[,z], quantile(X.aggregate[,z], probs=0:8/8), include.lowest=TRUE)))
   
-  estadomapa<-X.bins[,1]
+# estadomapa<-X.bins[,1]
+  cve_ent<-X$ENTIDAD_RES[match(as.vector(X.bins$Group.1), as.vector(X[,n]))]
+  cve_mun<-X$MUNICIPIO_RES[match(as.vector(X.bins$Group.1), as.vector(X[,n]))]
+  estadomapa<-mun$nom_ent[cve_ent]
+
  # estadomapa<-X$nom_ent[match(as.vector(X.bins$Group.1), as.vector(X[,n]))]
  # latitud<-X$latitud[match(as.vector(X.bins$Group.1), as.vector(X[,n]))]
  # longitud<-X$longitud[match(as.vector(X.bins$Group.1), as.vector(X[,n]))]
