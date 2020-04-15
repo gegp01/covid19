@@ -1,6 +1,6 @@
 
 f.bins<-function(X, z, n){
-  X.aggregate<-aggregate(X[z], list(X[,n]), mean)
+  X.aggregate<-aggregate(X[z], list(X[,n]), sum)
   X.bins<-within(X.aggregate, decil <- as.integer(cut(X.aggregate[,z], quantile(X.aggregate[,z], probs=0:8/8), include.lowest=TRUE)))
   
   estadomapa<-X.bins[,1]
