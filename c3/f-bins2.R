@@ -3,7 +3,7 @@ mun<-read.csv("https://gegp01.github.io/covid19/c3/municipios_cve_latlon.csv") #
 
 f.bins<-function(X, z, n){
   X.aggregate<-aggregate(X[z], list(X[,n]), sum)
-  X.bins<-within(X.aggregate, decil <- as.integer(cut(X.aggregate[,z], quantile(X.aggregate[,z], probs=0:10/10), include.lowest=TRUE)))
+  X.bins<-within(X.aggregate, decil <- as.integer(cut(X.aggregate[,z], quantile(X.aggregate[,z], probs=0:8/8), include.lowest=TRUE)))
   
   # estadomapa<-X.bins[,1]
   cve_ent<-X$ENTIDAD_RES[match(as.vector(X.bins$Group.1), as.vector(X[,n]))]
