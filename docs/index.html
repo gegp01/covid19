@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>covid-19</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+    <!--script language="JavaScript">
+        var pass_entered;
+        var password="";
+        while (pass_entered!=password) {
+            pass_entered=prompt('contraseña:','');
+        }
+        self.close();
+    </script>
+    
+<script language="JavaScript">
+var pass_entered;
+var password="x2";
+while (pass_entered!=password) {
+    pass_entered=prompt('La información conenida aquí es confidencial. Ingrese la contraseña:','');
+}
+self.close();
+</script-->
+
+<style>
+    hr { 
+      display: block;
+      margin-top: -9em;
+      margin-bottom: 0em;
+      margin-left: 10px;
+      margin-right: 100px;
+      border-style: inset;
+      border-width: 1px;
+      color:"DodgerBlue";
+    } 
+          
+     .indented {
+      padding-left: 30pt;
+      padding-right: 30pt;
+    }
+    .sticky {
+      position: fixed;
+      top: 0%;
+      left:0%;
+    } 
+
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #16a085;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a, .dropbtn {
+      display: inline-block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover, .dropdown:hover .dropbtn {
+      color: darkslategrey;
+      background-color:  #eef6dc;
+    }
+
+    li.dropdown {
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {background-color: ##eef6dc;}
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+  </style>
+
+
+
+</head>
+
+ <!--iframe class="sticky" src="navbar.html" style="border:transparent; width:100%; height:60px;" name="navbar"></iframe-->
+
+<body>
+
+<h2><font face="arial">Análisis epidemiológico del COVID-19 en México</font></h2>
+
+  <ul>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Modelos epidemiológicos</a>
+      <div class="dropdown-content">
+        <a href="https://gegp01.shinyapps.io/seird/" target="iframe1">modelo compartimentalizado (SEIRD)</a>
+      </div>  
+    </li>
+
+
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">R scripts</a>
+      <div class="dropdown-content">
+        <a href="sir/SEIR.html" target="iframe1">modelo compartimentalizado (SEIRD)</a>
+      </div>
+    </li>
+
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Datos</a>
+      <div class="dropdown-content">
+        <a href="" target="iframe1">movilidad</a>
+        <a href="" target="iframe1">demográficos</a>
+      </div>
+    </li>
+
+    <!--li class="dropdown">
+      <a>Open source license</a>
+      <div class="dropdown-content">
+        <a href="https://scholar.google.fr/citations?user=Q6Kcj2MAAAAJ&hl=en" target="_blank" style="color:#85929e;"><font size=2px>Gabriel E García Peña
+        <br><font face="italic">gegp[AT]ciencias.unam.mx</font></font></a>
+        <a rel='license' href='http://creativecommons.org/licenses/by-sa/4.0/'><img alt='Creative Commons License' style='border-width:0' src='https://i.creativecommons.org/l/by-sa/4.0/88x31.png'/><br><font size=1px>Last update: 06-jun-2020</font></a>
+        
+    </div>
+    </li-->
+
+  </ul>
+
+
+  <iframe name="iframe1" src="https://gegp01.shinyapps.io/seird/" style="border:none; height:100vh ; width: 97%; margin-top: 2%;">
+  </iframe>
+
+</body>
+</html>
