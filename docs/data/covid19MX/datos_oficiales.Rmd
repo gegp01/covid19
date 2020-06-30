@@ -1,0 +1,112 @@
+---
+title: <h3><a href="https://www.gob.mx/salud/documentos/datos-abiertos-152127">Datos oficiales de la Dirección General de Epidemiología</a></h3>
+#author: "Gabriel E Garcia-Peña"
+date: "Fecha de actualización: `r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+<h4><a href='http://187.191.75.115/gobmx/salud/datos_abiertos/datos_abiertos_covid19.zip' target='_blank'>Descargar datos oficiales</a></h4>
+<br>
+<h5>Casos de pacientes con sintomas de covid19</h5>
+```{r casos_nuevos, echo=F, message=F}
+
+source("https://gegp01.github.io/covid19/wget_covid19MX.R")
+saveRDS(d, "~/c3/covid19MX/datos_oficiales.rds")
+covid<-readRDS("~/c3/covid19MX/datos_oficiales.rds")
+
+    covid$FECHA_ACTUALIZACION[covid$FECHA_ACTUALIZACION=="9999-99-99"]<-NA
+    covid$FECHA_ACTUALIZACION<-as.Date(covid$FECHA_ACTUALIZACION)
+    covid$sintomas_julianos<-covid$FECHA_ACTUALIZACION-as.Date("2020-01-01")
+    
+    covid$FECHA_INGRESO[covid$FECHA_INGRESO=="9999-99-99"]<-NA
+    covid$FECHA_INGRESO<-as.Date(covid$FECHA_INGRESO)
+    covid$sintomas_julianos<-covid$FECHA_INGRESO-as.Date("2020-01-01")
+    
+    covid$FECHA_SINTOMAS[covid$FECHA_SINTOMAS=="9999-99-99"]<-NA
+    covid$FECHA_SINTOMAS<-as.Date(covid$FECHA_SINTOMAS)
+    covid$sintomas_julianos<-covid$FECHA_SINTOMAS-as.Date("2020-01-01")
+    
+    covid$FECHA_DEF[covid$FECHA_DEF=="9999-99-99"]<-NA
+    covid$FECHA_DEF<-as.Date(covid$FECHA_DEF) 
+    covid$defuncion_julianos<-covid$FECHA_DEF-as.Date("2020-01-01")
+
+par(mai=c(1,1,0.5, 0.5), cex.axis=0.8)
+
+x<-table(as.vector(covid$sintomas_julianos))
+z<-as.vector(x)
+time<-as.numeric(names(x))
+
+plot(x, axes=F, frame=F, col="olivedrab3"
+     , ylab="pacientes", xlab="dias", xlim=c(0,200), ylim=c(0, 15000))
+axis(1, at=c(0,31,59,90,120, 151, 181), labels=c("ene", "feb", "mar", "abr", "mayo", "jun", "jul"))
+axis(2)
+
+x4<-table(covid$sintomas_julianos[covid$RESULTADO==1])
+points(x4, col="red")
+
+x2<-table(covid$defuncion_julianos)
+points(x2, col="royalblue")
+
+x3<-table(covid$sintomas_julianos[covid$INTUBADO==1])
+points(x3, col="purple")
+
+legend(10,12000
+       , legend=c("negativos al SARS-CoV-2", "infectados con SARS-CoV-2", "defunciones", "intubados")
+       , col=c("olivedrab3", "red", "royalblue", "purple"), lty=1, box.lwd=0)
+
+```
+
+<h5>Distrubución de casos por estado</h5> 
+<br>
+```{r casos_estado, echo=F, message=F}
+ent<-read.csv("catalogo_estados.csv")
+
+y<-table(covid$ENTIDAD_RES)
+nms<-as.vector(ent$ENTIDAD_FEDERATIVA)[match(as.numeric(names(y)), as.vector(ent$CLAVE_ENTIDAD))]
+
+par(mai=c(2.5,1,0.5, 0.5), cex=0.8)
+barplot(y, names=(nms), las=2, col="olivedrab3", cex.names=0.8)
+legend("topright", legend=c("negativos al SARS-CoV-2", "infectados con SARS-CoV-2" )
+       , pch=19, col=c("olivedrab3", "red"), box.lwd=0)
+
+#barplot(y, names=(nms), las=3, col="olivedrab3", cex.names=0.8, xaxt="n")
+#text(x=nms, y=y, cex=0.5, labels=nms, xpd=T, srt=25)
+
+q<-y
+names(q)<-nms
+
+i.ent<-table(covid$RESULTADO==1, covid$ENTIDAD_RES)
+q2<-i.ent[2,] # positivos
+names(q2)<-nms
+barplot(q2, col="red", add=T, axes=F, names="")
+
+q2.neg<-i.ent[1,]
+q2.pos<-i.ent[2,]
+
+names(q2.neg)<-nms
+names(q2.pos)<-nms
+
+# defunciones
+d.ent<-table(is.na(covid$FECHA_DEF), covid$ENTIDAD_RES)[1,]
+names(d.ent)<-nms
+barplot(q2, col="red", add=T, axes=F, names="")
+
+```
+<br><br>
+<h5>Sospechosos, positivos al SARS-CoV-2, y letalidad (%) por estado</h5>
+<br>
+```{r letalidad_estado, echo=F, message=F}
+
+data.frame(negativos=q2.neg, positivos=q2.pos, defunciones=d.ent, letalidad=round(d.ent/q2.pos*100,1))
+
+#<br>
+#<h5>Modelo comparimentalizado (SEIRD) comparado con los datos</h5>
+```
+* La letalidad es el número de defunciones por cada 100 casos positivos.
+
+
+
+
