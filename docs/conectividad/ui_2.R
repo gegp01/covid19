@@ -9,6 +9,7 @@ library(DT)
 library(visNetwork)
 library(epicontacts)
 library(adegenet)
+library(png)
 
 options(shiny.maxRequestSize = 30*1024^2) # ALLOW HANDLING LARGE FILES
 
@@ -17,6 +18,7 @@ ui <- fluidPage(
                              background-color:#FFFFFF;}')  #f7f9f9
     , htmlOutput("text3")
     , selectInput("origen1","", choices = NULL, width="90%")
+    , plotOutput("semaforo")
     , visNetworkOutput('d3f')
     , htmlOutput("text1")
     , htmlOutput("text2")
