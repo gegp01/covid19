@@ -80,7 +80,7 @@ server <- function(input, output, session) {
         pp <- readPNG("house_white.png")
         plot.new()
         rasterImage(pp,0,0,1,1)
-        points(0.5,0.5, pch=19, cex=60, col="red")
+        points(0.5,0.5, pch=19, cex=60, col=bg)
         rasterImage(pp,0,0,1,1)
         })
     
