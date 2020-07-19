@@ -75,6 +75,7 @@ server <- function(input, output, session) {
        })
     
     output$semaforo<-renderPlot({
+        height=500, width=500
         focal<-as.vector(net1$from)[grep(as.vector(input$origen1), as.vector(net1$from.nom))]
         bg<-as.vector(nodos()$color)[grep(focal, as.vector(nodos()$id))]
         pp <- readPNG("house_white.png")
