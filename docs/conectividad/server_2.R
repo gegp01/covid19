@@ -75,7 +75,6 @@ server <- function(input, output, session) {
        })
     
     output$semaforo<-renderPlot({
-        height=500, width=500
         focal<-as.vector(net1$from)[grep(as.vector(input$origen1), as.vector(net1$from.nom))]
         bg<-as.vector(nodos()$color)[grep(focal, as.vector(nodos()$id))]
         pp <- readPNG("house_white.png")
@@ -85,7 +84,7 @@ server <- function(input, output, session) {
         points(0.5,0.5, pch=19, cex=35, col=bg)
         rasterImage(pp,0,0,1,1)
         text(1.15,0.5, paste("El municipio tiene:", X$infectados_10milhab[match(input$origen1, X$ID)], "infectados"))
-        })
+        }, height=300, width=300)
     
   
     
