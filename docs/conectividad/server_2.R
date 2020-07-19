@@ -74,6 +74,16 @@ server <- function(input, output, session) {
                 )
        })
     
+    output$semaforo<-renderPlot({
+        focal<-as.vector(net1$from)[grep(as.vector(input$origen1), as.vector(net1$from.nom))]
+        bg<-nodos()$bg[nodos()$id==focal]
+        pp <- readPNG("house_white.png")
+        plot.new()
+        rasterImage(pp,0,0,1,1)
+        points(0.5,0.5, pch=19, cex=60, col=bg)
+        rasterImage(pp,0,0,1,1)
+        })
+    
   
     
     output$links<- renderDataTable({
