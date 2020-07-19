@@ -76,7 +76,7 @@ server <- function(input, output, session) {
     
     output$semaforo<-renderPlot({
         focal<-as.vector(net1$from)[grep(as.vector(input$origen1), as.vector(net1$from.nom))]
-        bg<-nodos()$bg[grep(focal, nodos()$id)]
+        bg<-nodos()$color[grep(focal, nodos()$id)]
         pp <- readPNG("house_white.png")
         plot.new()
         rasterImage(pp,0,0,1,1)
