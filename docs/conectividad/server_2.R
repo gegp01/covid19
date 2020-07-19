@@ -79,12 +79,13 @@ server <- function(input, output, session) {
         bg<-as.vector(nodos()$color)[grep(focal, as.vector(nodos()$id))]
         pp <- readPNG("house_white.png")
         plot.new()
+        par(mai=c(1,1,1,1)
         plot(NULL, xlim=c(0,1.5), ylim=c(-0.25,1.25), axes=F, xlab="", ylab="")
         rasterImage(pp,0,0,1,1)
         points(0.5,0.5, pch=19, cex=35, col=bg)
         rasterImage(pp,0,0,1,1)
         text(1.15,0.5, paste("El municipio tiene:", X$infectados_10milhab[match(input$origen1, X$ID)], "infectados"))
-        }, height=300, width=300)
+        }) #, height=300, width=300)
     
   
     
