@@ -14,13 +14,13 @@ library(png)
 options(shiny.maxRequestSize = 30*1024^2) # ALLOW HANDLING LARGE FILES
 
 ui <- fluidPage(
-    tags$style('.container-fluid {
+  tags$style('.container-fluid {
                              background-color:#FFFFFF;}')  #f7f9f9
-    , htmlOutput("text3")
-    , selectInput("origen1","", choices = NULL, width="90%")
-    , plotOutput("semaforo")
-    , visNetworkOutput('d3f')
-    , htmlOutput("text1")
-    , htmlOutput("text2")
-    , dataTableOutput("links")
-        )
+  , htmlOutput("text3")
+  , selectInput("origen1","", choices = NULL, width="90%")
+  , plotOutput("semaforo", width="290px", height="290px") #idth=1000/72, height=1000/72)
+  , visNetworkOutput('d3f')
+  , htmlOutput("text1")
+  , htmlOutput("text2")
+  , dataTableOutput("links")
+)
