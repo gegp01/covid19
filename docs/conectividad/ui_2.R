@@ -1,4 +1,3 @@
-
 # # author: Gabriel Ernesto García-Peña
 # # beta version @
 # # https://gegp01.shinyapps.io/conectividad_municipios
@@ -33,4 +32,3 @@ ui <- fluidPage(theme=shinytheme("spacelab")
                 , htmlOutput("text2")
                 , dataTableOutput("links")
                 )
-)
