@@ -189,7 +189,7 @@ server <- function(input, output, session) {
   output$text3<-renderUI({
     HTML("<h3>¿Te expones al covid-19 cuando viajas?</h3><p align='justify'>Cuando nos movemos de un lugar a otro encontramos personas y materiales originarios de distintos lugares del país.
            Muchas personas no presentan síntomas del covid-19 y así pueden transmitir el virus SARS-CoV-2 de un lugar a otro, sin darse cuenta.<br><br>
-           <h4 style='color:royalblue;'>Planea tus viajes, al viajar te expones al virus y también expones a los otros. Aquí puedes saber como avanza la epidemia en los municipios conectados al tuyo.</h4></p>")
+           <h4 style='color:royalblue;'>Planea tus viajes, al viajar te expones al virus y también expones a los otros.</h4></p>")
   })
   
 }
