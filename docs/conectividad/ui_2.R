@@ -18,7 +18,7 @@ ui <- fluidPage(theme=shinytheme("spacelab")
                 , tags$style('.container-fluid {
                              background-color:#FFFFFF;}')  #f7f9f9
                 , htmlOutput("text3")
-                , selectInput("origen1","Selecciona un municipio para saber como avanza la epidemia", choices = NULL, width="350px")
+                , selectInput("origen1","Selecciona un municipio para saber como avanza la epidemia", choices = NULL, width="400px")
                 , htmlOutput("text.semaforo1")
                 , plotOutput("semaforo", width="290px", height="290px") #idth=1000/72, height=1000/72)
 #                , HTML("<h4>Toma precauciones para no infectarte o infectar a los demás</h4>")
