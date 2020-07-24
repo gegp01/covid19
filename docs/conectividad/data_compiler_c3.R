@@ -15,6 +15,22 @@
     
     mun$pobtot<-pobtot[match(mun$MUN_OFICIA, names(pobtot))]
 
+# CORREGIR LOS NOMBRES
+      # ref<-read.csv("~/COVID19_C3/html/datos_covid19/catalogo_municipios.csv"
+      #               , colClasses=c(rep("character",3)))
+
+      ref<-read.csv("catalogo_municipios.csv"
+                    , colClasses=c(rep("character",3)))
+
+      ref$MUN_OFICIA<-paste(ref$CLAVE_ENTIDAD, ref$CLAVE_MUNICIPIO, sep="")
+      
+      # head(cbind(mun$NOM_MUN, ref$MUNICIPIO[match(mun$MUN_OFICIA, ref$MUN_OFICIA)]))
+      mun$MUNICIPIO<-ref$MUNICIPIO[match(mun$MUN_OFICIA, ref$MUN_OFICIA)]
+      
+      require(Hmisc)
+      mun$MUNICIPIO<-capitalize(tolower(mun$MUNICIPIO))
+      mun$NOM_MUN<-mun$MUNICIPIO
+
 ##########################################
 # COMPILAR BASE DE DATOS: NODOS.rds
 # COVID19_MX, OBTENER DATOS OFICIALES DESDE EL SITIO OFICIAL    
