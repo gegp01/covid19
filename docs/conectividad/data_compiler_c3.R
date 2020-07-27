@@ -122,8 +122,8 @@ data("Flu2009") # SE UTILIZA LA DISTRIBUCION DE LA INFLUENZA PARA EL MODELO
 
 # LEER DATOS DE GOOGLE MOBILITY REPORT
       G<-read.csv("https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv")
-      saveRDS(G, "~/COVID19_C3/html/movilidad/google_mobility.rds")
-      google<-readRDS("~/COVID19_C3/html/movilidad/google_mobility.rds")
+      saveRDS(G, "google_mobility.rds")
+      google<-readRDS("google_mobility.rds")
       
       gmx<-google[grep("Mex", google$country_region),]
       gmx$date<-as.Date(gmx$date)
