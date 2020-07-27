@@ -119,4 +119,26 @@ data("Flu2009") # SE UTILIZA LA DISTRIBUCION DE LA INFLUENZA PARA EL MODELO
 
 # GUARDAR DATOS ACTUALIZADOS EN DISCO DEL SERVIDOR
       mun$ID<-paste(mun$NOM_MUN, mun$NOM_ENT, mun$MUN_OFICIA, sep="-")
-      saveRDS(mun, "NODOS.rds")
+
+# LEER DATOS DE GOOGLE MOBILITY REPORT
+      G<-read.csv("https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv")
+      saveRDS(G, "~/COVID19_C3/html/movilidad/google_mobility.rds")
+      google<-readRDS("~/COVID19_C3/html/movilidad/google_mobility.rds")
+      
+      gmx<-google[grep("Mex", google$country_region),]
+      gmx$date<-as.Date(gmx$date)
+      gmx$julianday<-gmx$date-as.Date("2019-12-31")
+      gmx$entidad<-as.vector(gmx$sub_region_1)
+      
+################# Nota: hay que guardar "ent" en el servidor para el archivo data_compiler_c3.R
+      ent<-read.csv("cve_entidad_gmx.csv", sep=",", header=F, colClasses=c(rep("character",3)))
+      
+      gmx$CVE_ENT<-ent$V2[match(gmx$entidad, ent$V3)]
+      gmx.hoy<-gmx[gmx$julianday==max(gmx$julianday),]
+      
+      gmx.hoy.sorted<-gmx.hoy[match(mun$CVE_ENT, gmx.hoy$CVE_ENT),]
+      table(gmx.hoy.sorted$CVE_ENT==mun$CVE_ENT) # checar que los datos en gmx.hoy.sorted estén en el orden de mu
+      
+      nodos<-data.frame(mun, gmx.hoy.sorted)
+      saveRDS(nodos, "NODOS.rds")
+
