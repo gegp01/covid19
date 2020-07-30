@@ -1,0 +1,114 @@
+<html>
+<head>
+    <title>faro covid 19</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <!-- Optional Bootstrap theme -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+  <style>
+    hr { 
+      display: block;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      margin-left: 0vh;
+      margin-right: 0vh;
+      border-style: inset;
+      border-width: 1px;
+      color:"DodgerBlue";
+    } 
+    .collapsible {
+      color: #0B243B;
+      cursor: pointer;
+      padding: 0 0px;
+      width: 30vh;
+      border: none;
+      text-align: center;
+      outline: none;
+      font-size: 18px;
+      background-color: transparent;
+    }
+
+    .active{
+      background-color:transparent;
+      color: #0B243B;
+    }
+
+    .collapsible:hover {
+      background-color:transparent;
+      color: #2EFEF7;
+    }
+
+    .content {
+      padding: 3 3vh;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      background-color: transparent;
+      text-align:justify;
+    }
+
+    .indented {
+      padding-left: 3vh;
+      padding-right: 3vh;
+    }
+
+  </style>
+</head>
+
+<body>
+    <div align="center">
+      <button class="collapsible"><h2>Faro COVID-19</h2></button>
+      <div class="content indented">
+        <!--p align="justify"-->
+        <hr>
+          <i>Los faros indican a los viajeros sobre los peligros que hay en su camino</i>.<br><br> Para moverte de un lugar a otro durante la epidemia de la COVID-19, es útil que sepas en que lugares te expones al coronavirus  SARS-CoV-2. Así podrás tomar precauciones para no contagiarte y contagiar a tu comunidad. Con esa intención este faro te muestra como va la epidemia en el municipio hacia donde quieras viajar. 
+          <br><br>
+          El faro se actualiza diariamente con los datos oficiales de la Secretaria de Salud de la Ciudad de México, calcula la tasa de infeccion (Rt) en el municipio, y te dice cuanta movilidad reporta Google en el estado. Muchas personas no presentan síntomas del covid-19 y así pueden transmitir el virus SARS-CoV-2 de un lugar a otro, sin darse cuenta.
+          <br>
+          <ul>
+            <li><b>PROTEGETE</b>: Evita lugares en donde hay muchos infectados, Rt alta, y en donde hay mucha movilidad de personas.</li>
+            <br>
+            <li><b>PROTEGE A LOS DEMÁS</b>: Cuando viajes a un lugar sin infectados, toma precauciones para no contagiar a los otros.</li>
+          </ul>
+          <br>
+          <p style="text-align:right;"><i>Con el esfuerzo de todos nos cuidamos todos</i></p>    
+        <!--/p-->
+              <hr>
+      </div>
+    </div>
+
+    <div>
+        <iframe src="https://gegp01.shinyapps.io/conectividad_municipios/"
+        style="border:none;
+        ; height: 100%
+            ; width: 100%
+            ; scrolling='no' 
+            ; frameborder='0'
+            ; -webkit-transform:scale(1)
+            ;  -moz-transform-scale(1);
+             ">
+               
+             </iframe>
+      </div>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } 
+      });
+    }
+</script>
+
+</body>
+</html>
