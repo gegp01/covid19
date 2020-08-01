@@ -4,7 +4,8 @@ td = tempdir()
 # create the placeholder file
 tf = tempfile(tmpdir=td, fileext=".zip")
 # download into the placeholder file
-download.file("http://187.191.75.115/gobmx/salud/datos_abiertos/datos_abiertos_covid19.zip", tf)
+download.file("http://epidemiologia.salud.gob.mx/gobmx/salud/datos_abiertos/datos_abiertos_covid19.zip", tf)
+# download.file("http://187.191.75.115/gobmx/salud/datos_abiertos/datos_abiertos_covid19.zip", tf) # cambio la dirección! 31/jul/2020
 
 # get the name of the first file in the zip archive
 fname = unzip(tf, list=TRUE)$Name[1]
