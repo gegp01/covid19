@@ -16,4 +16,4 @@ fpath = file.path(td, fname)
 
 # stringsAsFactors=TRUE will screw up conversion to numeric!
 d = read.csv(fpath, header=TRUE, row.names=NULL, 
-             stringsAsFactors=FALSE)
+             stringsAsFactors=FALSE, colClasses=c(rep("character",35)))
