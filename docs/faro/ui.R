@@ -1,6 +1,7 @@
-# # ####################################################################################
-# # # # author: Gabriel Ernesto García-Peña
-# # # # beta version @ https://gegp01.shinyapps.io/conectividad_municipios
+# # # ####################################################################################
+# # # # # author: Gabriel Ernesto García-Peña
+# # # # # beta version @
+# # # # # https://gegp01.shinyapps.io/conectividad_municipios
 library(shiny)
 library(shinythemes)
 library(shinyjs)
@@ -18,8 +19,11 @@ ui <- fluidPage(theme=shinytheme("superhero")
                 , tags$style('.container-fluid {
                              background-color:transparent;}')
                 , HTML("<h3>¿Te expones al COVID 19 cuando viajas?</h3>")
-                , selectInput("origen1", HTML("<h4>Selecciona un municipio para saber como avanza la epidemia</h4>"), choices = NULL, width="430px")
-                
-                , plotOutput("semaforo", width="290px", height="290px") #idth=1000/72, height=1000/72)
+                , HTML("Selecciona el municipio a dónde vas:")
+                , selectInput("ENTIDAD", HTML("<h4>Entidad</h4>"), choices = NULL, width="430px")
+                , selectInput("MUNICIPIO", HTML("<h4>Municipio</h4>"), choices = NULL, width="430px")
+                , textOutput('origen1')
+                , plotOutput("semaforo", width="290px", height="290px")
                 , htmlOutput("text.semaforo1")
+
 )
