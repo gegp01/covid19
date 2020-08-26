@@ -1,4 +1,5 @@
 # # # ####################################################################################
+# # # ####################################################################################
 # # # # # author: Gabriel Ernesto García-Peña
 # # # # # beta version @
 # # # # # https://gegp01.shinyapps.io/conectividad_municipios
@@ -6,24 +7,27 @@ library(shiny)
 library(shinythemes)
 library(shinyjs)
 library(DT)
-library(visNetwork)
-library(epicontacts)
-library(adegenet)
 library(png)
 
 options(shiny.maxRequestSize = 30*1024^2) # ALLOW HANDLING LARGE FILES
+X<-readRDS("NODOS.rds")
 
-ui <- fluidPage(theme=shinytheme("superhero")
+ui <- fluidPage(theme=shinytheme("spacelab")
                 , titlePanel("", windowTitle="C3 covid-19")
                 , align="center"
                 , tags$style('.container-fluid {
-                             background-color:transparent;}')
-                , HTML("<h3>¿Te expones al COVID 19 cuando viajas?</h3>")
-                , HTML("Selecciona el municipio a dónde vas:")
-                , selectInput("ENTIDAD", HTML("<h4>Entidad</h4>"), choices = NULL, width="430px")
-                , selectInput("MUNICIPIO", HTML("<h4>Municipio</h4>"), choices = NULL, width="430px")
-                , textOutput('origen1')
-                , plotOutput("semaforo", width="290px", height="290px")
-                , htmlOutput("text.semaforo1")
-
-)
+                             background-color:transparent; font-size:small;}')
+                , fluidRow(
+                  
+                  column(5,
+                    selectInput("ENTIDAD", HTML("<b>Selecciona una Entidad</b>"), choices = NULL, width="400px")
+                    , selectInput("MUNICIPIO", HTML("<b>Selecciona un Municipio</b>"), choices = NULL, width="400px")
+                    , plotOutput("semaforo", width="200px", height="200px")
+                   ),
+                
+                  column(6,
+                    HTML("</br>")
+                    , htmlOutput("text.semaforo1")
+                   )
+                )
+               )
