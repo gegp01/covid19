@@ -2,7 +2,7 @@
 # author: Gabriel Ernesto García-Peña
 server <- function(input, output, session) {
 
-   ID<-as.vector(paste(X$MUNICIPIO, X$ENTIDAD, sep="-"))
+  ID<-as.vector(paste(X$MUNICIPIO, X$ENTIDAD, sep="-"))
 
   observe({
     if (is.null(X)) return(NULL)
@@ -10,10 +10,8 @@ server <- function(input, output, session) {
     updateSelectInput(session, "ENTIDAD", choices = var.opts.ENT, selected="CIUDAD DE MÉXICO")
   })
 
-
   Q<-eventReactive(input$ENTIDAD, {
     sort(X$NOM_MUN[as.vector(X$NOM_ENT)==input$ENTIDAD])})
-   
   observe({
     if (is.null(input$ENTIDAD)) return(NULL)
     updateSelectInput(session, "MUNICIPIO", choices = Q(), selected=NULL)
@@ -25,19 +23,20 @@ server <- function(input, output, session) {
 
   output$origen1<-renderText({paste("", origen1())})
 
-  # DATOS DE LA SELECCIÓN MUNICIPIO-ENTIDAD
-   
+###############################
+
   nodos<-reactive({
 
     id<-X[match(origen1(), as.vector(paste(X$NOM_MUN, X$NOM_ENT, sep="-"))),]
-    
-    positivos10milhab<-id$infectados15d_10milhab
+
+    positivos10milhab<-id$infectados15d_10milhab # id$infectados_10milhab
     positivos<-id$infectados
     negativos<-id$negativos
     Rt<-id$Rt2
-     
-    # COLOR DEL SEMÁFORO 
+
+    # COLOR
     bg<-ifelse(positivos10milhab <= mean(X$infectados15d_10milhab), "#2ecc71", "red")
+
 
     # SHAPE
     shp<-as.vector(rep("circularImage", length(id$MUN_OFICIA)))
@@ -69,13 +68,15 @@ server <- function(input, output, session) {
     )
 
   })
-
+   
   output$semaforo<-renderPlot({
+    #bg<-as.vector(nodos()$color)[grep(input$origen1, as.vector(nodos()$nom_mun))]
     bg<-as.vector(nodos()$color)[grep(origen1(), as.vector(nodos()$nom_mun))]
     pp <- readPNG("house_white.png")
     plot.new()
     par(mai=c(0.5,0.5,0.5,0.5), bg="transparent")
     plot(NULL, xlim=c(0,1), ylim=c(0,1), axes=F, xlab="", ylab="")
+    #rasterImage(pp,0,0,1,1)
     points(0.5,0.5, pch=19, cex=20, col=bg)
     rasterImage(pp,0,0,1,1)
   })
@@ -89,25 +90,26 @@ server <- function(input, output, session) {
     google.home<-X$residential_percent_change_from_baseline[as.vector(ID)==origen1()]
 
     pobtot<-nodos()$pobtot 
-    semaforo<-nodos()$color 
+    semaforo<-nodos()$color
+
     HTML(paste(
       "<div style='text-align:justify;'>" 
-      
+
       , "En", origen1()
       , "se han reportado"
       , paste("<font style='color:red'>", sep="")
       , nodos()$positivos
-      , "personas infectadas</font>,", "<font color=#2ecc71>", nodos()$negativos, " casos negativos.</font>"
-     
+      , "personas infectadas</font>", " y <font color=#2ecc71>", nodos()$negativos, " casos negativos.</font>"
+
       , "<font style='color:", semaforo,";'></font> Hay", "<font style='color:", semaforo, "';>", ifelse(semaforo=="red", "más", "menos"),  "contagiados activos </font> en el municipio que el promedio nacional"
       , "de", round(mean(X$infectados15d_10milhab), 1)*10, "infectados por cada 100 mil habitantes."
       , "</font><br><br>"
-      
+
       , "Al día de hoy se estiman "
       , paste("<font style='color:", semaforo, "'>", sep=""), round(I.activos*10,0)
       , "contagiados activos por cada 100mil habitantes en el municipio.</font> Estas son personas infectadas con coronavirus SARS-CoV-2 que comenzaron síntomas hace 15 dias (dividido entre los habitantes del municipio x 100 mil)."
 
-      
+
       , "</br></br><b>Movilidad de personas</b></br><font color=#5dade2>G<font color=red>o<font color=#f4d03f>o</font></font>g<font color=#2ecc71>l<font color=red>e</font></font></font></font> reporta que actualmente las personas en", input$ENTIDAD , "se mueven"
       , ifelse(google.work==0, "como antes", paste(google.work, "%"))
       , "al trabajo"
