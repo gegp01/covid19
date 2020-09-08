@@ -1,0 +1,64 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="css/spacelab/bootstrap.min.css">
+  <script>
+  	MathJax = {
+  		tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+  	};
+  </script>
+  <!--script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script-->
+
+  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+	<div align="left">
+		<div style="text-align:justify; max-width: 800px;">
+				<h4 style="text-align:center;">¿Por qué la epidemia aumenta en algunos municipios <br>y en otros disminuye?</h4>
+
+			<p>Algunas personas son más susceptibles de desarrollar síntomas de COVID 19 tras la infección con el coronavirus SARS-CoV-2, e ir a un centro de salud. 
+
+			<br><br> 
+			La susceptibilidad de cada persona depende de su estado físico, su conducta,  ubicación geográfica y socio-demográfica. Estas características pueden sumarse o a veces cancelarse. Por ejemplo, quien trabaja en contacto con muchas personas será altamente susceptible si trabaja en un municipio en el que hay muchos contagios. En cambio, quien trabaja desde su casa puede tener una baja suceptibilidad independientemente de los contagios en el municipio en el que vive.
+
+			<br><br>
+			Para investigar todas estas posibilidades, en el Centro de Ciencias de la Complejidad se analiza la propagación de la COVID 19, utilizando minería de datos y aprendizaje de máquinas.
+			<br><br>
+
+			<a href="http://covid19.c3.unam.mx/" target="_blank">Epi-species</a> es una plataforma de análisis de Bayes (geográfico y de redes) que evalúa las correlaciones geográficas entre los indicadores de la epidemia del COVID-19 y cientos de predictores de diferente naturaleza: epidemiológicos, coinfecciones y comorbilidades, socio-económicos, demográficos, de infraestructura y de movilidad. El proyecto es dirigido por el Dr. Christopher Stephens del Instituto de Ciencias Nucleares y el Centro de Ciencias de la Complejidad de la UNAM. <a href="http://covid19.c3.unam.mx/" target="_blank">Visita el proyecto aquí</a>.
+
+			<br><br>
+			<h5>Un ejemplo de Epi-species</h5>
+			Si queremos saber quienes son las personas más susceptibles de enfermar por COVID 19 podemos analizar de los datos públicos de la <a href="#Datos">Dirección General de Epidemiología</a>.
+
+			<br><br>
+			Cada día $N$ personas sospechosas de tener COVID 19 ingresan a los centros de salud en el país; y en una fracción de ellos se confirma que tienen la enfermedad. A esta fracción le llamaremos $N_{covid}$, y la probabilidad de tener covid será $$P(covid) = N_{covid}/N$$
+
+			<br><br>
+			Si tenemos una hipótesis $H$ sobre quienes son los más suceptibles de enfermar por covid, por ejemplo que los más suceptibles son de algún municipio particular. Entonces podemos probar esta hipótesis, comparando el número de personas confirmadas que son de ese municipio $H$, con el número de personas sospechosas de ese municipio, con y sin COVID 19. <br><br> $$P(covid|H) = N_{covid, H} / N_{H}$$ 
+
+			<br><br>
+			Para saber en cual municipio hay mas personas susceptibles al COVID 19 se utiliza una prueba binomial considerando que el número de casos no es el mismo en todas las pruebas de la hipótesis.
+
+			<br><br>$$\mathcal{E} (covid | H ) = N_{H} ( P(covid | H ) − P(covid) ) ·  (N_{H} P (covid) (1 − P (covid))) ^{-1/2}$$
+
+			<br><br>
+			$\mathcal{E}(covid|H)$ representa el apoyo estadístico de casos confirmados de COVID 19 en cada uno de los municipios.  Los valores son relativos a la hipótesis nula $P(covid)$ de que los casos de COVID 19 aparecen de forma aleatoria en los municipios.
+
+			<br> <br>
+			En este ejercicio consideramos a todos los pacientes activos (que inciaron síntomas desde hace 20 días o menos) y los resultados se presentan en un mapa que indica el valor de $\mathcal{E}(covid|H)$ para cada municipio. Solo se dibujan municipios con valores mayores a 1.6 ya que indican en donde es estadísticamente esperable tener casos confirmados de COVID 19.
+
+			<br><br>
+
+			<iframe src="covid_epsilon.html" frameborder="0" style="width:100%; height:1000px; border:0; margin:auto;"></iframe>
+
+			<br>
+		</div>
+	</div>
+
+</body>
+</html>
