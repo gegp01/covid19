@@ -2,7 +2,7 @@
 <html>
 <head>
 	
-	<title>COVID-19 en México</title>
+	<title>epsilon - contagios activos</title>
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,14 +32,14 @@
 
 	</style>
 
-	<script>
+<!--script>
   	MathJax = {
   		tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
   	};
-  </script>
+  </script-->
   <!--script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script-->
 
-  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!--script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script-->
 	
 
 
@@ -47,7 +47,6 @@
 </head>
 <body>
 
-<p align="center">probabilidad de encontrar confirmados en el municipio: $\mathcal{E}(covid|H)$</p>
 <div id="mapid" style="width: 100%; height: 500px;"></div>
 
 <script type="text/javascript" src="mun_epsilon.geojson"></script>
@@ -72,9 +71,9 @@
 	           d > 20  ? '#BD0026' :
 	           d > 15  ? '#E31A1C' :
 	           d > 10  ? '#FC4E2A' :
-	           d > 1.6   ? '#FD8D3C' :
-	           d > -1.6   ? '#FEB24C' :
-	           d > -30   ? '#FFEDA000' :
+	           d > 5   ? '#FD8D3C' :
+	           d > 1.6   ? '#FEB24C' :
+	           d > -50   ? '#FFEDA000' :
 	                      '#FFEDA000';
 	}
 
@@ -99,7 +98,7 @@
 	legend.onAdd = function (map) {
 
 	    var div = L.DomUtil.create('div', 'info legend'),
-	        grades = [-30, -1.6, 1.6, 10, 15, 20, 30],
+	        grades = [-50, 1.6, 5, 10, 15, 20, 50],
 	        labels = [];
 
 	    // loop through our density intervals and generate a label with a colored square for each interval
