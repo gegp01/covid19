@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>cards</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/spacelab/bootstrap.min.css">
+
+</head>
+
+<body>
+  <div id = "mapa" class="indented" align="left">
+    <div class=indented align="justify" style="max-width:800px;"><br><br><h4 style="text-align:center;">Decifra los datos de la epidemia</h4>
+      La Dirección General de Epidemiologia reporta diariamente a los sospechosos, enfermos y hospitalizados por COVID 19. Para visualizar estos datos, desarrollamos mapas que se actualizan diariamente con los datos oficiales. Con ellos, se estima: (1) el número de personas infectadas activas (infectados que inciaron síntomas hace no más de 15 días); (2) el aumento de los contagios en el tiempo <a href="https://www.paho.org/en/documents/covid-19-modeling-exercise-how-calculate-rt-guide-epiestim" target="_blank">(Rt)</a>; y (3) información sobre la movilidad de las personas publicada por las empresas <a href="#movil">Google y Facebook</a>. 
+
+<br><br>
+      Este sistema permite informar al usuario sobre el avance de la epidemia y su exposición potencial al COVID 19. <a href="#Datos">El archivo del mapa se puede descargar aquí</a>.</div> 
+
+<br><br>
+
+    <!--div class="row">
+
+
+    </br></br-->
+
+    <div class="row" style="float:center; margin-left:1%;">Catálogo de mapas
+
+      <font size=2>
+
+        <div class="row">
+
+            <ul> 
+              <li class="card border-primary mb-3 offset-1" style="width:200px; text-align: center; box-shadow: 0 12px 16px 0 rgba(0,0,0,0.1), 0 17px 50px 0 rgba(0,0,0,0.19);">
+                <a href="covid_inf15d10mil.html" target="iframe1">Infectados activos / 100 mil hab</a>
+                <!--a href="https://symbiontit.c3.unam.mx/covid_inf15d10mil.html" class="dropbtn" target="iframe1">Infectados activos / 100 mil hab</a-->
+              </li>
+
+              <li class="card border-primary mb-3 offset-1" style="width:200px; text-align: center; box-shadow: 0 12px 16px 0 rgba(0,0,0,0.1), 0 17px 50px 0 rgba(0,0,0,0.19);">
+                <a href="covid_dead10mil.html" target="iframe1">Decesos / 100 mil hab</a>
+                <!--a href="https://symbiontit.c3.unam.mx/covid_dead10mil.html" class="dropbtn" target="iframe1">Decesos / 100 mil hab</a-->
+              </li>
+            </ul>
+
+            <ul>
+
+              <li class="card border-primary mb-3 offset-1" style="width:200px; text-align: center; box-shadow: 0 12px 16px 0 rgba(0,0,0,0.1), 0 17px 50px 0 rgba(0,0,0,0.19);">
+                <a href="covid_Rt.html" target="iframe1">Incremento en contagios (Rt)</a>
+                <!--a href="https://symbiontit.c3.unam.mx/covid_Rt.html" class="dropbtn" target="iframe1">Incremento en contagios (Rt)</a-->
+              </li>
+
+              <li class="card border-primary mb-3 offset-1" style="width:200px; text-align: center; box-shadow: 0 12px 16px 0 rgba(0,0,0,0.1), 0 17px 50px 0 rgba(0,0,0,0.19);">
+                <a href="covid_wrkmxsem.html" target="iframe1">Movilidad</a>
+                <!--a href="https://symbiontit.c3.unam.mx/covid_wrkmxsem.html" class="dropbtn" target="iframe1">Movilidad</a-->
+              </li>
+            </ul>
+          </div>
+
+        </div></font>
+      <!--/div-->
+      <br>
+      <div style="float:left;">
+        <iframe name="iframe1" src="https://symbiontit.c3.unam.mx/covid_inf15d10mil.html" frameborder='0' style="width:800px; height:600px; border:0; margin:auto;"></iframe>
+      </div>
+      <div style="float:left;margin:auto;">
+        <iframe name="iframe2" src="https://gegp01.shinyapps.io/conectividad_municipios/" frameborder='0' style="width:800px; height:600px; border:0; margin:auto;"></iframe>
+      </div>
+
+
+    </div>
+
+
+</body>
+</html>
