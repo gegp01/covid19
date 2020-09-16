@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>COVID-19 en México</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+
+	<style>
+		.legend {
+	    	line-height: 21px;
+	    	width:100%;
+	    	color: darkslategrey;
+	    	background:azure;
+	    	opacity: 0.6;
+	    }
+
+	    .legend i {
+	    	width: 18px;
+	    	height: 18px;
+	    	float: left;
+	    	margin-right: 8px;
+	    	opacity: 1;
+	    }
+
+	</style>
+	
+</head>
+<body>
+
+<p align="center">infectados activos / 100 mil habitantes</p>
+<div id="mapid" style="width: 100%; height: 500px;"></div>
+
+<script type="text/javascript" src="mun.geojson"></script>
+
+<script>
+
+	var mymap = L.map('mapid').setView([23.634501, -102.552784], 4.5);
+
+	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox/light-v9',
+		tileSize: 512,
+		zoomOffset: -1
+	}).addTo(mymap);
+
+
+	function getColor(d) {
+	    return d > 55 ? '#800026' :
+	           d > 34  ? '#BD0026' :
+	           d > 21  ? '#E31A1C' :
+	           d > 13  ? '#FC4E2A' :
+	           d > 8   ? '#FD8D3C' :
+	           d > 5   ? '#FEB24C' :
+	           d > 0   ? '#FED976' :
+	                      '#FFEDA0';
+	}
+
+	function style(feature) {
+			return {
+				weight: 2,
+				opacity: 1,
+				color: 'transparent',
+				dashArray: '3',
+				fillOpacity: 0.5,
+				fillColor: getColor(feature.properties.inf15d10mil*10),
+			};
+		}
+
+	var geojson = L.geoJson(munDATA, {
+		style: style,
+	}).addTo(mymap);
+
+
+	var geojsonMarkerOptions = {
+	    radius: 8,
+	    fillColor: "#ff7800",
+	    color: "#000",
+	    weight: 1,
+	    opacity: 1,
+	    fillOpacity: 0.8
+	};
+
+	L.geoJSON(feature.properties.inf15d10mil, {
+	    pointToLayer: function (feature, latlng) {
+	        return L.circleMarker(latlng, geojsonMarkerOptions);
+	    }
+	}).addTo(mymap);
+
+
+	var legend = L.control({position: 'topright'});
+
+
+	legend.onAdd = function (map) {
+
+	    var div = L.DomUtil.create('div', 'info legend'),
+	        grades = [0, 5, 8, 13, 21, 34, 55],
+	        labels = [];
+
+	    // loop through our density intervals and generate a label with a colored square for each interval
+	    for (var i = 0; i < grades.length; i++) {
+	        div.innerHTML +=
+	            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+	            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+	    }
+	  
+
+	    return div;
+	};
+
+	legend.addTo(mymap);
+
+
+</script>
+
+</body>
+</html>
