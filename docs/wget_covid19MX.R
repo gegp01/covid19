@@ -16,5 +16,8 @@ unzip(tf, files=fname, exdir=td, overwrite=TRUE)
 fpath = file.path(td, fname)
 
 # stringsAsFactors=TRUE will screw up conversion to numeric!
-d = read.csv(fpath, header=TRUE, row.names=NULL, 
-             stringsAsFactors=FALSE)
+   d = read.csv(fpath, header=TRUE, row.names=NULL, stringsAsFactors=FALSE, nrows=10) 
+   q<-ncol(d) # NUMERO DE COLUMNAS EN EL ARCHIVO
+
+# LEER TODO EL ARCHIVO
+covid = read.csv(fpath, header=TRUE, row.names=NULL, stringsAsFactors=FALSE, colClasses=c(rep("character",q))) 
