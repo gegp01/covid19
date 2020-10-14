@@ -14,14 +14,14 @@
             margin: 0;
         }
         html, body, #map {
-            height: 100%;
+            height: 80%;
             width: 100%;
         }
     </style>
 </head>
 <body>
     <div id="map"></div>    
-    <iframe src="https://datos.cdmx.gob.mx/explore/embed/dataset/colonias-de-atencion-prioritaria-covid-kioscos/table/?sort=-id&static=false&datasetcard=false" width="400" height="300" frameborder="0"></iframe>
+    <iframe src="https://datos.cdmx.gob.mx/explore/embed/dataset/colonias-de-atencion-prioritaria-covid-kioscos/table/?sort=-id&static=false&datasetcard=false" width="100%" height="300" frameborder="0"></iframe>
     <script>
         let map = L.map("map", {center: [19.42847, -99.12766], zoom: 11});
         L.tileLayer(
