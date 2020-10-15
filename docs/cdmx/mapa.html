@@ -65,17 +65,8 @@
 				opacity: 1,
 				color: 'transparent',
 				fillOpacity: 0.5,
-				fillColor: geojsonData;});
+				fillColor: feature.properties.Rt.col;});
 	    
-	    var geojsonData;// Fetch the file
-	    $.getJSON('mun.geojson', function (results) {
-		    
-		    // Assign the results to the geojsonData variable
-		    geojsonData = Rt.col;
-		    
-		    // Assign the data to the layer
-		    featureLayer.setGeoJSON(geojsonData);
-						  });
         
     </script>
 </body>
