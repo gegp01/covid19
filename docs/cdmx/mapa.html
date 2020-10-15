@@ -32,16 +32,16 @@
             'www.openstreetmap.org/copyright">OpenStreetMap</a>'}
         ).addTo(map);
         
-        	function getColor(d) {
-                return d > 30 ? '#800026' :
-                d > 20  ? '#BD0026' :
-	            d > 15  ? '#E31A1C' :
-	            d > 10  ? '#FC4E2A' :
-	            d > 5   ? '#FD8D3C' :
-	            d > 1.6   ? '#FEB24C' :
-	            d > -50   ? '#FFEDA000' :
+	function getColor(d) {
+	    return d > 2.7 ? '#800026' :
+	           d > 2.4  ? '#BD0026' :
+	           d > 2.1  ? '#E31A1C' :
+	           d > 1.8  ? '#FC4E2A' :
+	           d > 1.5   ? '#FD8D3C' :
+	           d > 1   ? '#FEB24C' :
+	           d > 0   ? '#FED976' :
 	                      '#FFEDA000';
-            }
+	}
         
             function style(feature) {
                 return {
@@ -50,7 +50,7 @@
 				color: 'transparent',
 				dashArray: '3',
 				fillOpacity: 0.5,
-				fillColor: getColor(feature.properties.epsilon)
+				fillColor: getColor(feature.properties.Rt)
                 };
             }
 
