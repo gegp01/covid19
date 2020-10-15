@@ -49,14 +49,15 @@
         
         var mun = fetch("mun.geojson")
             .then(function(response) {return response.json();})
-            .then(function(data) {L.geoJSON(data, {style:
-						   {Weight: 2,
-						    opacity: 1,
-						    color: 'transparent',
-						    dashArray: '3',
-						    fillOpacity: 0.5,
-						    fillColor: feature.properties.Rt_col
-						   }
+            .then(function(data) {L.geoJSON(data, {
+		    style: {
+			    weight: 2,
+			    opacity: 1,
+			    color: 'transparent',
+			    dashArray: '3',
+			    fillOpacity: 0.5,
+			    fillColor: feature.properties.Rt_col
+		    }
 						  
 						  }).addTo(map);});
 	   
