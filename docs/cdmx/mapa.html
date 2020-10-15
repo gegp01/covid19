@@ -60,7 +60,7 @@
         
         var mun = fetch("mun.geojson")
             .then(function(response) {return response.json();})
-            .then(function(data) {L.geoJSON(mun).addTo(map);});
+            .then(function(data) {L.geoJSON(data, {style: style,}).addTo(map);});
         
     </script>
 </body>
