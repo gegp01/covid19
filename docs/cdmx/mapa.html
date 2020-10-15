@@ -60,7 +60,12 @@
         
         var mun = fetch("mun.geojson")
             .then(function(response) {return response.json();})
-            .then(function(data) {L.geoJSON(data, {style: style,}).addTo(map);});
+            .then(function(data) {L.geoJSON(data, {style: {
+				weight: 2,
+				opacity: 1,
+				color: 'transparent',
+				fillOpacity: 0.5,
+				fillColor: feature.properties.Rt.col}}).addTo(map);});
         
     </script>
 </body>
