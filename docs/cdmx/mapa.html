@@ -58,14 +58,14 @@
             .then(function(data) {L.geoJSON(data, {style: style2});})
 	;
 	    
-	var map = L.map("map", {center: [19.42, -99.12766], zoom: 10, layers: [cdmx]});
+	var map = L.map("map", {center: [19.42, -99.12766], zoom: 10});
 	    	
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", 
 				 {attribution: '&copy; <a href="http://' + 'www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
 	    
 	var overlays = {
-		"kioscos_CDMX": cdmx,
-		"Rt": Rt
+		"kioscos_CDMX": L.geoJSON(cdmx),
+		"Rt": L.geoJSON(Rt)
 	};
 	    
 	L.control.layers(overlays).addTo(map);
