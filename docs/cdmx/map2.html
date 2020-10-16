@@ -77,7 +77,8 @@
 	};
 
 	var overlays = {
-		"Cities": cities
+		"Cities": cities,
+		"Rt": L.geoJSON(Rt)
 	};
 
 	L.control.layers(baseLayers, overlays).addTo(map);
