@@ -26,9 +26,9 @@
     <!--iframe src="https://datos.cdmx.gob.mx/explore/embed/dataset/colonias-de-atencion-prioritaria-covid-kioscos/table/?sort=-id&static=false&datasetcard=false" width="100%" height="300" frameborder="0"></iframe-->
     <script>
         
-        let map = L.map("map", {center: [19.42, -99.12766], zoom: 10});
+        L.map("map", {center: [19.42, -99.12766], zoom: 10});
 	    	
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", 
+        var cities = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", 
 				 {attribution: '&copy; <a href="http://' + 'www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
         
             function style1(feature) {
@@ -59,18 +59,18 @@
         
             Rt = fetch("mun.geojson")
             .then(function(response) {return response.json();})
-            .then(function(data) {L.geoJSON(data, {style: style2}).addTo(map);});
+            .then(function(data) {L.geoJSON(data, {style: style1}).addTo(map);});
 	    
 	var baseLayers = {
-		"mapa": map,
+		"mapa": cities,
 	};
 	    
-	var overlayMaps = {
-		"kioscos CDMX": cdmx,
+	var overlays = {
+		"kioscos_CDMX": cdmx,
 		"Rt": Rt
 	};
 	    
-	L.control.layers(baseLayers, overlayMaps).addTo(map);
+	L.control.layers(cities, overlays).addTo(map);
 	   
     </script>
 </body>
