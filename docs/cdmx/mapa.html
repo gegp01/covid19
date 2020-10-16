@@ -58,7 +58,7 @@
         
             Rt = fetch("mun.geojson")
             .then(function(response) {return response.json();})
-            .then(function(data) {L.geoJSON(data, {style: style2});}).addTo(map);
+            .then(function(data) {L.geoJSON(data, {style: style2}).addTo(map);});
 	    
 	var baseLayers = {
 		"mapa": cities,
