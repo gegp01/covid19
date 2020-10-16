@@ -32,24 +32,35 @@
             'www.openstreetmap.org/copyright">OpenStreetMap</a>'}
         ).addTo(map);
         
-            function style(feature) {
+            function style1(feature) {
+                return {
+				weight: 2,
+				opacity: 1,
+				color: 'transparent',
+				dashArray: '3',
+				fillOpacity: 0.3,
+				fillColor: feature.properties.inf15d10mil_col
+                };
+            }
+	    
+	    function style2(feature) {
                 return {
 				weight: 2,
 				opacity: 1,
 				color: 'transparent',
 				dashArray: '3',
 				fillOpacity: 0.5,
-				fillColor: feature.properties.inf15d10mil_col
+				fillColor: feature.properties.Rt_col
                 };
             }
 
         var cdmx = fetch("colonias-de-atencion-prioritaria-covid-kioscos.geojson")
             .then(function(response) {return response.json();})
-            .then(function(data) {L.geoJSON(data).addTo(map);});
+            .then(function(data) {L.geoJSON(data).addTo(map);}),
         
-        var mun = fetch("mun.geojson")
+            mun = fetch("mun.geojson")
             .then(function(response) {return response.json();})
-            .then(function(data) {L.geoJSON(data, {style: style}).addTo(map);});
+            .then(function(data) {L.geoJSON(data, {style: style1}).addTo(map);});
 	   
     </script>
 </body>
