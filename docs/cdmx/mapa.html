@@ -61,7 +61,7 @@
             .then(function(data) {L.geoJSON(data, {style: style2}).addTo(map);});
 	    
 	var baseLayers = {
-		"mapa": cities,
+		"mapa": map,
 	};
 	    
 	var overlayMaps = {
@@ -69,7 +69,7 @@
 		"Rt": Rt
 	};
 	    
-	L.control.layers(overlayMaps).addTo(map);
+	L.control.layers(baseLayers, overlayMaps).addTo(map);
 	   
     </script>
 </body>
