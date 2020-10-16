@@ -58,7 +58,7 @@
             .then(function(data) {L.geoJSON(data, {style: style2});})
 	;
 	    
-	var map = L.map("map", {center: [19.42, -99.12766], zoom: 10, layers: [cdmx, Rt]});
+	var map = L.map("map", {center: [19.42, -99.12766], zoom: 10});
 	    	
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", 
 				 {attribution: '&copy; <a href="http://' + 'www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
