@@ -51,9 +51,9 @@
             }
 	
 
-	var Rt = fetch("mun.geojson")
+	fetch("mun.geojson")
             .then(function(response) {return response.json();})
-            .then(function(data) {L.geoJSON(data, {style: style2}).addTo(map);})
+            .then(function(data) {var Rt = L.geoJSON(data, {style: style2});})
 	;
 	
 	var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
