@@ -1,4 +1,4 @@
-{
+var covidapp = {
   "type": "FeatureCollection",
   "features": [
     {
@@ -2362,4 +2362,4 @@
       }
     }
   ]
-}
+} ; 
