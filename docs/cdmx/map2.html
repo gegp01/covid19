@@ -120,8 +120,17 @@
 	
 	L.control.layers(baseLayers, overlays).addTo(map);
 	
-	document.getElementById("MUNICIPIO").innerHTML;
+	let popup = L.popup();
+	function onMapClick(e) {
+		popup
+			.setLatLng(e.latlng)
+			.setContent("You clicked the map at -<br>" + "<b>lon:</b> " + e.latlng.lng + "<br>" + "<b>lat:</b> " + e.latlng.lat
+				   )
+			.openOn(map);
+	}
 	
+	map.addEventListener("click", onMapClick);
+
 </script>
 
 </body>
