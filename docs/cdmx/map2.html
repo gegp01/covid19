@@ -130,11 +130,28 @@
 				    + "<br>" 
 				    + "<b>lat:</b> " 
 				    + e.latlng.lat
+				    + 
 				   )
 			.openOn(map);
 	}
 	
 	map.addEventListener("click", onMapClick);
+	
+	
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+		});
+	}
+	
+	geojson = L.geoJson(XDATA, {
+//		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);
+	
+	
 
 </script>
 
