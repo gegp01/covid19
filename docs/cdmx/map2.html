@@ -15,13 +15,14 @@
 	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 
 	<style>
-		html, body {
-			height: 100%;
+		body {
+			padding: 0;
 			margin: 0;
 		}
-		#map {
-			width: 600px;
-			height: 400px;
+		
+		html, body, #map {
+			height: 100%;
+			width: 100%;
 		}
 	</style>
 
@@ -34,12 +35,6 @@
 <script src="mun.geojson"></script>
 	
 <script type="text/javascript">
-	var cities = L.layerGroup();
-
-	L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities),
-	L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
-	L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
-	L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
 	
 	function style_Rt(feature) {
 		return {
@@ -95,8 +90,8 @@
 
 	var map = L.map('map', {
 		center: [19.42, -99.127],
-		zoom: 10,
-		layers: [grayscale, cities]
+		zoom: 7,
+		layers: [grayscale, Rt]
 	});
 	
 	var infectados;
@@ -117,7 +112,6 @@
 	};
 
 	var overlays = {
-//		"Cities": cities,
 		"infectados activos / 10 mil hab.": infectados,
 		"decesos / 10 mil hab": decesos,
 		"incremento de contagios (Rt)": Rt,
