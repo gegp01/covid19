@@ -41,28 +41,6 @@
 	L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
 	L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
 	
-	function style_infectados(feature) {
-		return {
-			weight: 2,
-			opacity: 1,
-			color: 'transparent',
-			dashArray: '3',
-			fillOpacity: 0.5,
-			fillColor: feature.properties.inf15d10mil_col
-		};
-	}
-
-	function style_decesos(feature) {
-		return {
-			weight: 2,
-			opacity: 1,
-			color: 'transparent',
-			dashArray: '3',
-			fillOpacity: 0.5,
-			fillColor: feature.properties.dead10mil_col
-		};
-	}
-
 	function style_Rt(feature) {
 		return {
 			weight: 2,
@@ -89,14 +67,14 @@
 	});
 	
 	
-	var infectados;
-	var infectados = new L.geoJson(XDATA, {style:style_infectados});
+	// var infectados;
+	// var infectados = new L.geoJson(XDATA, {style:style_infectados});
 	
 	var Rt;
 	var Rt = new L.geoJson(XDATA, {style: style_Rt});
 
-	var decesos;
-	var decesos = new L.geoJson(XDATA, {style:style_decesos});
+	// var decesos;
+	// var decesos = new L.geoJson(XDATA, {style:style_decesos});
 
 	
 	var baseLayers = {
@@ -106,9 +84,9 @@
 
 	var overlays = {
 		"Cities": cities,
-		"infectados activos 10mil hab.": infectados
-		"decesos / 10 mil hab": decesos
-		"incremento en contagios (Rt)": Rt
+		// "infectados activos 10mil hab.": infectados
+		// "decesos / 10 mil hab": decesos
+		"Rt": Rt
 	};
 
 	L.control.layers(baseLayers, overlays).addTo(map);
