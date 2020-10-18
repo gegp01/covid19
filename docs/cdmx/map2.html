@@ -124,7 +124,13 @@
 	function onMapClick(e) {
 		popup
 			.setLatLng(e.latlng)
-			.setContent("You clicked the map at -<br>" + "<b>lon:</b> " + e.latlng.lng + "<br>" + "<b>lat:</b> " + e.latlng.lat
+			.setContent("You clicked the map at -<br>" 
+				    + "<b>lon:</b> " 
+				    + e.latlng.lng 
+				    + "<br>" 
+				    + "<b>lat:</b> " 
+				    + e.latlng.lat
+				    + XDATA.properties.inf15d10mil
 				   )
 			.openOn(map);
 	}
