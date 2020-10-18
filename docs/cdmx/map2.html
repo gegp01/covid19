@@ -70,7 +70,6 @@
 	var Rt;
 	var Rt = new L.geoJson(XDATA, {style: style2});
 	
-	Rt.addTo(map);
 
 	var baseLayers = {
 		"Grayscale": grayscale,
@@ -79,7 +78,7 @@
 
 	var overlays = {
 		"Cities": cities,
-		"Rt": cities
+		"Rt": Rt
 	};
 
 	L.control.layers(baseLayers, overlays).addTo(map);
