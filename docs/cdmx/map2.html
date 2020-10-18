@@ -90,13 +90,13 @@
 	
 	
 	var infectados;
-	var infectados = new L.geoJson(XDATA, style:style_infectados});
+	var infectados = new L.geoJson(XDATA, {style:style_infectados});
 	
 	var Rt;
 	var Rt = new L.geoJson(XDATA, {style: style_Rt});
 
 	var decesos;
-	var decesos = new L.geoJson(XDATA, style:style_decesos});
+	var decesos = new L.geoJson(XDATA, {style:style_decesos});
 
 	
 	var baseLayers = {
