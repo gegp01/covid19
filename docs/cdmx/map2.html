@@ -99,7 +99,12 @@
 			"<br><b>Entidad: </b>" +
 			feature.properties.ENTIDAD +
 			"<br><b>infectados / 100 mil hab.: </b>" +
-			Math.round(feature.properties.inf15d10mil*10)
+			Math.round(feature.properties.inf15d10mil*10) +
+			"<br><b>decesos / 100 mil hab.: </b>" +
+			Math.round(feature.properties.dead10mil*10) +
+			"<br><b>movilidad laboral (% respecto a enero 2020): </b>" +
+			Math.round(feature.properties.wrkmxsem)
+			
 		)
 	}	
 	
@@ -118,10 +123,10 @@
 	var Rt = new L.geoJson(XDATA, {style: style_Rt, onEachFeature: onEachFeature});
 	
 	var decesos;
-	var decesos = new L.geoJson(XDATA, {style:style_decesos});
+	var decesos = new L.geoJson(XDATA, {style:style_decesos, onEachFeature: onEachFeature});
 	
 	var movilidad;
-	var movilidad = new L.geoJson(XDATA, {style:style_movilidad});
+	var movilidad = new L.geoJson(XDATA, {style:style_movilidad, onEachFeature: onEachFeature});
 	
 	var covidapp;
 	var covidapp = new L.geoJson(covidapp, {
