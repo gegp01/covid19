@@ -103,13 +103,13 @@
 	
 	function onEachFeature(feature, layer) {
 		layer.bindPopup(
-			"<b>Municipio: </b>" +
+			"<b>municipio: </b>" +
 			feature.properties.MUNICIPIO +
-			"<br><b>Entidad: </b>" +
+			"<br><b>entidad federativa: </b>" +
 			feature.properties.ENTIDAD +
-			"<br><b>infectados / 100 mil hab.: </b>" +
+			"<br><b>infectados activos / 100 mil personas: </b>" +
 			Math.round(feature.properties.inf15d10mil*10) +
-			"<br><b>decesos / 100 mil hab.: </b>" +
+			"<br><b>decesos / 100 mil personas: </b>" +
 			Math.round(feature.properties.dead10mil*10) +
 			"<br><b>movilidad laboral (% respecto a enero 2020): </b>" +
 			Math.round(feature.properties.wrkmxsem)
