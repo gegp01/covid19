@@ -109,11 +109,8 @@
 		},
 		onEachFeature: function (feature, layer) {
 			    layer.bindPopup(
-				"<b>Municipio: </b>" +
-				feature.properties.MUNICIPIO + 
-				"</br>" + 
-				"<b>Entidad: </b>" +
-				feature.properties.ENTIDAD)
+				"<b>participaciones: </b>" +
+				feature.properties.reportes)
 			    }
 		
 	});
