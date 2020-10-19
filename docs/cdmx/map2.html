@@ -81,6 +81,17 @@
 		};
 	}
 	
+	function style0(feature) {
+		return {
+			weight: 2,
+			opacity: 0,
+			color: 'transparent',
+			//dashArray: '3',
+			fillOpacity: 0,
+			fillColor: 'transparent'
+		};
+	}
+	
 	var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -135,24 +146,16 @@
 	layers: [grayscale, covidapp, Rt]
 	});
 	
+	L.geoJson(XDATA, {style:style0,
+			  onEachFeature: function (feature, layer) {
+			    layer.bindPopup(
+				"<b>Municipio: </b>" +
+				feature.properties.MUNICIPIO)
+			    }
+			 }).addTo(map);
+		  
+	
 	L.control.layers(baseLayers, overlays).addTo(map);
-	
-	
-	let popup = L.popup();
-	function onMapClick(e) {
-		popup
-			.setLatLng(e.latlng)
-			.setContent("Ubicación -<br>" 
-				    + "<b>lon:</b> " 
-				    + e.latlng.lng 
-				    + "<br>" 
-				    + "<b>lat:</b> " 
-				    + e.latlng.lat
-				   )
-			.openOn(map);
-	}
-	
-	map.addEventListener("click", onMapClick);
 	
 	
 </script>
