@@ -63,22 +63,18 @@ self.close();
       width: 90%;
       margin:auto;
     }
-
-
+      
   </style>
 </head>
 
 <body>
 
-
-        
-
   <p class="card sticky" style="text-align: center; align-content: center; padding-top: 1.5vh; max-width:750px; height:50px;background:azure; box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); margin:auto;">
     <font size=3>
-      <a href="#mapa">Mapa epidemiológico |</a> 
-      <a href="#Rt"> Contagios 100mil hab |</a>
-      <a href="#epispecies"> Naive Bayes |</a>
-      <a href="#movil"> Movilidad |</a> 
+      <a href="epi-mapa.html" target="iframe1">Mapa epidemiológico |</a> 
+      <a href="Rt.html"> Contagios 100mil hab |</a>
+      <a href="https://gegp01.github.io/covid19/epi-species.html"> Naive Bayes |</a>
+      <a href="it_movilidad.html"> Movilidad |</a> 
       <a href="#Datos"> Datos públicos |</a>
     </font>
 </p>
@@ -86,33 +82,10 @@ self.close();
           <br>
 
 <div class="indented">
-    <div id = "mapa" align="center">
-        <!--iframe src="epi-mapa.html" frameborder="0" style="width:100%; height:1000px; border:0; margin:auto;"></iframe-->
-      <br><br><br>
-      <object data="epi-mapa.html" frameborder="0" style="width:100%; height:900px; border:0; margin:auto;"></object>
+
+    <div align="center">
+        <iframe id = "iframe1" src="epi-mapa.html" frameborder="0" style="width:100%; height:1500px; border:0; margin:auto;"></iframe>
     </div>
-
-    <div id = "Rt" align="center">
-      <br><br><br>
-        <iframe  src="Rt.html" frameborder="0" style="width:100%; height:1500px; border:0; margin:auto;"></iframe>
-      
-    </div>
-
-    <div id = "epispecies" align="center">
-      <br><br><br>
-
-        <iframe src="https://gegp01.github.io/covid19/epi-species.html" frameborder="0" style="width:100%; height:2300px; border:0; margin:auto;"></iframe>
-    </div>
-
-    <div id = "movil" align="center">
-      <br><br><br>
-        <iframe src="it_movilidad.html" frameborder="0" style="width:100%; height:1600px; border:0; margin:auto;"></iframe>
-    </div>
-
-    <div>
-
-    </div>
-      
 
       </br>
 
@@ -120,10 +93,7 @@ self.close();
     <br><br><br>Datos públicos utilizados en el análisis</h4>.
         <!--button class="btn btn-outline-primary">Datos públicos</button>
         <div class="content indented" style="background: #ffffff; max-width:100%;"-->
-        
-        <iframe src="datos_pub.html" frameborder='0' style="width:100%; height:100vh; border:0; margin:auto;"></iframe>
-
-
+     <iframe src="datos_pub.html" frameborder='0' style="width:100%; height:100vh; border:0; margin:auto;"></iframe>
     </div>
 </div>
 <script>
