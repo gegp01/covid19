@@ -43,7 +43,7 @@
 			opacity: 1,
 			color: 'transparent',
 			dashArray: '3',
-			fillOpacity: 0.3,
+			fillOpacity: 0.4,
 			fillColor: feature.properties.Rt_col
 		};
 	}
@@ -54,7 +54,7 @@
 			opacity: 1,
 			color: 'transparent',
 			dashArray: '3',
-			fillOpacity: 0.3,
+			fillOpacity: 0.4,
 			fillColor: feature.properties.dead10mil_col
 		};
 	}
@@ -64,8 +64,8 @@
 			weight: 2,
 			opacity: 1,
 			color: 'transparent',
-			dashArray: '3',
-			fillOpacity: 0.3,
+			// dashArray: '3',
+			fillOpacity: 0.4,
 			fillColor: feature.properties.inf15d10mil_col
 		};
 	}	
@@ -76,7 +76,7 @@
 			opacity: 1,
 			color: 'transparent',
 			dashArray: '3',
-			fillOpacity: 0.3,
+			fillOpacity: 0.4,
 			fillColor: feature.properties.wrkmxsem_col
 		};
 	}
@@ -105,7 +105,7 @@
 	var covidapp;
 	var covidapp = new L.geoJson(covidapp, {
 		pointToLayer: function(feature, latlng) {
-			return new L.CircleMarker(latlng, {radius: 4, fillOpacity: 0.4, color:'#38f6f9'});
+			return new L.CircleMarker(latlng, {radius: 4, fillOpacity: 0.5, color:'#38f6f9'});
 		}
 	});
       
