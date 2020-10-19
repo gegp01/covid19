@@ -125,8 +125,19 @@
 			    }
 		
 	});
-      
 	
+	
+	var info = L.geoJson(XDATA, {style:style0,
+			  onEachFeature: function (feature, layer) {
+			    layer.bindPopup(
+				    "<b>Municipio: </b>" +
+				    feature.properties.MUNICIPIO +
+				    "<br><b>Entidad: </b>" +
+				    feature.properties.ENTIDAD +
+				    "<br><b>infectados / 100 mil hab.: </b>" +
+				    Math.round(feature.properties.inf15d10mil*10)
+			    )}});	
+      
 	var baseLayers = {
 		"mapa base": grayscale,
 		"calles": streets
@@ -143,24 +154,9 @@
 	var map = L.map('map', {
 	center: [23.634501, -102.552784],
 	zoom: 5,
-	layers: [grayscale, covidapp, Rt]
+	layers: [grayscale, info, covidapp, Rt]
 	});
-	
-	L.geoJson(XDATA, {style:style0,
-			  onEachFeature: function (feature, layer) {
-			    layer.bindPopup(
-				    "<b>Municipio: </b>" +
-				    feature.properties.MUNICIPIO +
-				    "<br><b>Entidad: </b>" +
-				    feature.properties.ENTIDAD +
-				    "<br><b>infectados / 100 mil hab.: </b>" +
-				    Math.round(feature.properties.inf15d10mil*10)
-			    )
-			  }
-			 }
-		 ).addTo(map);
-		  
-	
+			  
 	L.control.layers(baseLayers, overlays).addTo(map);
 	
 	
