@@ -103,7 +103,12 @@
 	var movilidad = new L.geoJson(XDATA, {style:style_movilidad});
 	
 	var covidapp;
-	var covidapp = new L.geoJson(covidapp);
+	var covidapp = new L.geoJson(covidapp, {
+		pointToLayer: function(feature, latlng) {
+			return new L.CircleMarker(latlng, {radius: 10, fillOpacity: 0.85, color:'#f03'});
+		}
+	});
+      
 	
 	var baseLayers = {
 		"Grayscale": grayscale,
@@ -126,10 +131,6 @@
 	
 	L.control.layers(baseLayers, overlays).addTo(map);
 	
-	var circle = L.circle(covidapp], {color: 'red',
-						fillColor: '#f03',
-						fillOpacity: 0.5,
-						radius: 500}).addTo(map);
 	
 	let popup = L.popup();
 	function onMapClick(e) {
