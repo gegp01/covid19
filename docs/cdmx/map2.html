@@ -101,12 +101,31 @@
 		streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
 
 	var infectados;
-	var infectados = new L.geoJson(XDATA, {style:style_infectados});
+	var infectados = new L.geoJson(XDATA, {style:style_infectados,
+			  onEachFeature: function (feature, layer) {
+			    layer.bindPopup(
+				    "<b>Municipio: </b>" +
+				    feature.properties.MUNICIPIO +
+				    "<br><b>Entidad: </b>" +
+				    feature.properties.ENTIDAD +
+				    "<br><b>infectados / 100 mil hab.: </b>" +
+				    Math.round(feature.properties.inf15d10mil*10)
+			    )
+			  }});
 	
 	var Rt;
-	var Rt = new L.geoJson(XDATA, {style: style_Rt});
+	var Rt = new L.geoJson(XDATA, {style: style_Rt,
+				       onEachFeature: function (feature, layer) {
+					       layer.bindPopup(
+						       "<b>Municipio: </b>" +
+						    	feature.properties.MUNICIPIO +
+						    	"<br><b>Entidad: </b>" +
+						    	feature.properties.ENTIDAD +
+						    	"<br><b>infectados / 100 mil hab.: </b>" +
+						    	Math.round(feature.properties.inf15d10mil*10)
+					       )}
+				      });
 	
-
 	var decesos;
 	var decesos = new L.geoJson(XDATA, {style:style_decesos});
 	
@@ -127,16 +146,6 @@
 	});
 	
 	
-	var info = L.geoJson(XDATA, {style:style0,
-			  onEachFeature: function (feature, layer) {
-			    layer.bindPopup(
-				    "<b>Municipio: </b>" +
-				    feature.properties.MUNICIPIO +
-				    "<br><b>Entidad: </b>" +
-				    feature.properties.ENTIDAD +
-				    "<br><b>infectados / 100 mil hab.: </b>" +
-				    Math.round(feature.properties.inf15d10mil*10)
-			    )}});	
       
 	var baseLayers = {
 		"mapa base": grayscale,
