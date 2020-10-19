@@ -1,7 +1,7 @@
 <html>
 <head>
 	
-	<title>Layers Control Tutorial - Leaflet</title>
+	<title>mapas covid19</title>
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -111,8 +111,8 @@
       
 	
 	var baseLayers = {
-		"Grayscale": grayscale,
-		"Streets": streets
+		"mapa base": grayscale,
+		"calles": streets
 	};
 
 	var overlays = {
@@ -126,7 +126,7 @@
 	var map = L.map('map', {
 	center: [19.42, -99.127],
 	zoom: 7,
-	layers: [grayscale, covidapp, Rt]
+	layers: [streets, covidapp, Rt]
 	});
 	
 	L.control.layers(baseLayers, overlays).addTo(map);
