@@ -52,7 +52,7 @@
 			opacity: 1,
 			color: 'transparent',
 			dashArray: '3',
-			fillOpacity: 0.4,
+			fillOpacity: 0.5,
 			fillColor: feature.properties.Rt_col
 		};
 	}
@@ -63,8 +63,19 @@
 			opacity: 1,
 			color: 'transparent',
 			dashArray: '3',
-			fillOpacity: 0.4,
+			fillOpacity: 0.5,
 			fillColor: feature.properties.dead10mil_col
+		};
+	}
+
+	function style_decesos_tot(feature) {
+		return {
+			weight: 2,
+			opacity: 1,
+			color: 'transparent',
+			dashArray: '3',
+			fillOpacity: 0.5,
+			fillColor: feature.properties.dead_col
 		};
 	}
 	
@@ -74,7 +85,7 @@
 			opacity: 1,
 			color: 'transparent',
 			// dashArray: '3',
-			fillOpacity: 0.4,
+			fillOpacity: 0.5,
 			fillColor: feature.properties.inf15d10mil_col
 		};
 	}	
@@ -85,21 +96,11 @@
 			opacity: 1,
 			color: 'transparent',
 			dashArray: '3',
-			fillOpacity: 0.4,
+			fillOpacity: 0.5,
 			fillColor: feature.properties.wrkmxsem_col
 		};
 	}
 	
-	function style0(feature) {
-		return {
-			weight: 2,
-			opacity: 0,
-			color: 'transparent',
-			//dashArray: '3',
-			fillOpacity: 0,
-			fillColor: 'transparent'
-		};
-	}
 	
 	function onEachFeature(feature, layer) {
 		layer.bindPopup(
@@ -111,6 +112,8 @@
 			Math.round(feature.properties.inf15d10mil*10) +
 			"<br><b>decesos / 100 mil personas: </b>" +
 			Math.round(feature.properties.dead10mil*10) +
+			"<br><b>decesos totales: </b>" +
+			feature.properties.dead +
 			"<br><b>movilidad laboral (% respecto a enero 2020): </b>" +
 			Math.round(feature.properties.wrkmxsem)
 			
@@ -133,6 +136,9 @@
 	
 	var decesos;
 	var decesos = new L.geoJson(XDATA, {style:style_decesos, onEachFeature: onEachFeature});
+	
+	var decesos_tot;
+	var decesos_tot = new L.geoJson(XDATA, {style:style_decesos_tot, onEachFeature: onEachFeature});
 	
 	var movilidad;
 	var movilidad = new L.geoJson(XDATA, {style:style_movilidad, onEachFeature: onEachFeature});
@@ -161,6 +167,7 @@
 		"coronavirusapoyamexico.c3.unam.mx" : covidapp,
 		"infectados activos / 10 mil hab.": infectados,
 		"decesos / 10 mil hab": decesos,
+		"decesos totales": decesos_tot,
 		"incremento de contagios (Rt)": Rt,
 		"movilidad máxima en la semana pasada": movilidad
 	};
