@@ -154,8 +154,10 @@
 	var map = L.map('map', {
 	center: [23.634501, -102.552784],
 	zoom: 5,
-	layers: [grayscale, info, covidapp, Rt]
+	layers: [grayscale, covidapp, Rt]
 	});
+	
+	info.addTo(map);
 			  
 	L.control.layers(baseLayers, overlays).addTo(map);
 	
