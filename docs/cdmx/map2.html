@@ -105,7 +105,7 @@
 	var covidapp;
 	var covidapp = new L.geoJson(covidapp, {
 		pointToLayer: function(feature, latlng) {
-			return new L.CircleMarker(latlng, {radius: 5, fillOpacity: 0.5, color:'#f938ca'});
+			return new L.CircleMarker(latlng, {radius: 4, fillOpacity: 0.4, color:'#38f6f9'});
 		}
 	});
       
@@ -126,7 +126,7 @@
 	var map = L.map('map', {
 	center: [19.42, -99.127],
 	zoom: 7,
-	layers: [grayscale, Rt]
+	layers: [grayscale, covidapp, Rt]
 	});
 	
 	L.control.layers(baseLayers, overlays).addTo(map);
