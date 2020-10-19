@@ -106,7 +106,16 @@
 	var covidapp = new L.geoJson(covidapp, {
 		pointToLayer: function(feature, latlng) {
 			return new L.CircleMarker(latlng, {radius: 4, fillOpacity: 0.5, color:'#38f6f9'});
-		}
+		},
+		onEachFeature: function (feature, layer) {
+			    layer.bindPopup(
+				"<b>Municipio: </b>" +
+				feature.properties.MUNICIPIO + 
+				"</br>" + 
+				"<b>Entidad: </b>" +
+				feature.properties.ENTIDAD)
+			    }
+		
 	});
       
 	
