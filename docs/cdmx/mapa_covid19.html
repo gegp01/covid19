@@ -181,6 +181,27 @@
 		  
 	L.control.layers(baseLayers, overlays).addTo(map);
 	
+		function popup2(feature, layer) {
+			layer.bindPopup(
+				"<b>alcaldía: </b>" +
+				feature.properties.alcaldia +
+				"<b>colonia: >/b>" +
+				feature.properties.colonia
+				"<br><b>casos activos: </b>" +
+				feature.properties.casos_activos +
+				"<br><b>kiosco: </b>" +
+				feature.properties.kiosco_lugar +
+				"<br><b>dirección: </b>" +
+				feature.properties.kiosco_direccion
+				
+			)
+		}
+	
+		fetch("colonias-de-atencion-prioritaria-covid-kioscos.geojson")
+		.then(function(response) {return response.json();})
+		.then(function(data) {L.geoJSON(data {onEachFeature: popup2}).addTo(map);})
+	;
+	
 	
 </script>
 
