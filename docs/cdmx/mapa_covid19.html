@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 	
@@ -183,16 +184,16 @@
 	};
 
 	var map = L.map('map', {
-	center: [19.420, -99.12766],
+	center: [19.41, -99.12766],
 	zoom: 11,
-	layers: [streets, covidapp]
+	layers: [grayscale, covidapp]
 	});
 	
 	L.control.layers(baseLayers, overlays).addTo(map);
 	
 		function popup2(feature, layer) {
 			layer.bindPopup(
-				"<b>KIOSCOS y CENTROS DE SALUD <br> alcaldía: </b>" +
+				"<b>KIOSCOS y CENTROS DE SALUD <br><br> alcaldía: </b>" +
 				feature.properties.alcaldia +
 				"<br><b>colonia: </b>" +
 				feature.properties.colonia +
