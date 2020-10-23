@@ -185,11 +185,11 @@
 	};
 
 	var map = L.map('map', {
-	center: [23.634501, -102.552784],
-	zoom: 5,
+	center: [19.42847, -99.12766],
+	zoom: 10,
 	layers: [streets, covidapp]
 	});
-		  
+	
 	L.control.layers(baseLayers, overlays).addTo(map);
 	
 		function popup2(feature, layer) {
@@ -209,11 +209,13 @@
 			)
 		}
 	
-		fetch("colonias-de-atencion-prioritaria-covid-kioscos.geojson")
+	var kioscos = fetch("colonias-de-atencion-prioritaria-covid-kioscos.geojson")
 		.then(function(response) {return response.json();})
 		.then(function(data) {L.geoJSON(data, {style:style_0, onEachFeature: popup2}).addTo(map);})
 	;
 	
+	map.on("overlayadd", function (event) {kioscos.bringToFront();
+	});
 	
 </script>
 
