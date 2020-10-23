@@ -168,6 +168,10 @@
 		
 	});
 	
+	var kioscos = fetch("colonias-de-atencion-prioritaria-covid-kioscos.geojson")
+		.then(function(response) {return response.json();})
+		.then(function(data) {L.geoJSON(data, {style:style_0, onEachFeature: popup2});})
+	;	
 	
       
 	var baseLayers = {
@@ -181,7 +185,8 @@
 		"decesos / 100 mil personas": decesos,
 		"decesos totales": decesos_tot,
 		"incremento de contagios (Rt)": Rt,
-		"movilidad máxima en la semana pasada": movilidad
+		"movilidad máxima en la semana pasada": movilidad,
+		"kioscos":kioscos
 	};
 
 	var map = L.map('map', {
@@ -209,11 +214,7 @@
 			)
 		}
 	
-	var kioscos = fetch("colonias-de-atencion-prioritaria-covid-kioscos.geojson")
-		.then(function(response) {return response.json();})
-		.then(function(data) {L.geoJSON(data, {style:style_0, onEachFeature: popup2}).addTo(map);})
-	;
-	
+
 	map.on("overlayadd", function (event) {kioscos.bringToFront();
 	});
 	
