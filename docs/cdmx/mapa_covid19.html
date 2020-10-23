@@ -101,6 +101,17 @@
 		};
 	}
 	
+	function style_0(feature) {
+		return {
+			weight: 2,
+			opacity: 1,
+			color: 'firebrick',
+			dashArray: '3',
+			fillOpacity: 0.3,
+			fillColor: "red"
+		};
+	}
+	
 	
 	function onEachFeature(feature, layer) {
 		layer.bindPopup(
@@ -176,7 +187,7 @@
 	var map = L.map('map', {
 	center: [23.634501, -102.552784],
 	zoom: 5,
-	layers: [grayscale, covidapp, Rt]
+	layers: [streets, covidapp]
 	});
 		  
 	L.control.layers(baseLayers, overlays).addTo(map);
@@ -185,21 +196,22 @@
 			layer.bindPopup(
 				"<b>alcaldía: </b>" +
 				feature.properties.alcaldia +
-				"<b>colonia: >/b>" +
+				"<br><b>colonia: </b>" +
 				feature.properties.colonia +
 				"<br><b>casos activos: </b>" +
 				feature.properties.casos_activos +
 				"<br><b>kiosco: </b>" +
 				feature.properties.kiosco_lugar +
 				"<br><b>dirección: </b>" +
-				feature.properties.kiosco_direccion
-				
+				feature.properties.kiosco_direccion +
+				"<br><b>tasa de contagios / 100 mil personas: </b>" +
+				feature.properties.tasa_casos_activos_por_100_mil_habitantes			
 			)
 		}
 	
 		fetch("colonias-de-atencion-prioritaria-covid-kioscos.geojson")
 		.then(function(response) {return response.json();})
-		.then(function(data) {L.geoJSON(data, {onEachFeature: popup2}).addTo(map);})
+		.then(function(data) {L.geoJSON(data, {style:style, onEachFeature: popup2}).addTo(map);})
 	;
 	
 	
