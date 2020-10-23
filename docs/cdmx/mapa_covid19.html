@@ -199,7 +199,7 @@
 	
 		fetch("colonias-de-atencion-prioritaria-covid-kioscos.geojson")
 		.then(function(response) {return response.json();})
-		.then(function(data) {L.geoJSON(data {onEachFeature: popup2}).addTo(map);})
+		.then(function(data) {L.geoJSON(data, {onEachFeature: popup2}).addTo(map);})
 	;
 	
 	
