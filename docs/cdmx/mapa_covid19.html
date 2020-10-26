@@ -196,15 +196,13 @@
 				"<b>KIOSCOS y CENTROS DE SALUD <br><br> alcaldía: </b>" +
 				feature.properties.alcaldia +
 				"<br><b>colonia: </b>" +
-				feature.properties.colonia +
-				"<br><b>casos activos: </b>" +
-				feature.properties.casos_activos +
-				"<br><b>kiosco: </b>" +
-				feature.properties.kiosco_lugar +
-				"<br><b>dirección: </b>" +
-				feature.properties.kiosco_direccion +
+				feature.properties.nombre +
+				"<br><b>habitantes: </b>" +
+				feature.properties.población +
+				"<br><b>casos activos : </b>" +
+				feature.properties.activos +
 				"<br><b>tasa de contagios / 100 mil personas: </b>" +
-				feature.properties.tasa_casos_activos_por_100_mil_habitantes			
+				feature.properties.tasa_activos_100mil_hab			
 			)
 		}
 	
@@ -212,10 +210,6 @@
 		.then(function(response) {return response.json();})
 		.then(function(data) {L.geoJSON(data, {style:style_0, onEachFeature: popup2}).addTo(map);})
 	;	
-
-	map.on("overlayadd", function (event) {kioscos.bringToFront();
-	});
-	
 </script>
 
 </body>
