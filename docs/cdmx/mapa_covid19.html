@@ -208,7 +208,8 @@
 			)
 		}
 	
-	var kioscos = fetch("colonias-de-atencion-prioritaria-covid-kioscos.geojson")
+	//var kioscos = fetch("colonias-de-atencion-prioritaria-covid-kioscos.geojson")
+	var kioscos = fetch("https://datos.cdmx.gob.mx/explore/dataset/colonias-de-atencion-prioritaria-covid-kioscos/download/?format=geojson&timezone=America/Mexico_City&lang=es")
 		.then(function(response) {return response.json();})
 		.then(function(data) {L.geoJSON(data, {style:style_0, onEachFeature: popup2}).addTo(map);})
 	;	
