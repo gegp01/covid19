@@ -47,39 +47,6 @@
 	
 <script type="text/javascript">
 	
-	function style_Rt(feature) {
-		return {
-			weight: 2,
-			opacity: 1,
-			color: 'transparent',
-			dashArray: '3',
-			fillOpacity: 0.5,
-			fillColor: feature.properties.Rt_col
-		};
-	}
-	
-	function style_decesos(feature) {
-		return {
-			weight: 2,
-			opacity: 1,
-			color: 'transparent',
-			dashArray: '3',
-			fillOpacity: 0.3,
-			fillColor: feature.properties.dead10mil_col
-		};
-	}
-
-	function style_decesos_tot(feature) {
-		return {
-			weight: 2,
-			opacity: 1,
-			color: 'transparent',
-			dashArray: '3',
-			fillOpacity: 0.3,
-			fillColor: feature.properties.dead_col
-		};
-	}
-	
 	function style_infectados(feature) {
 		return {
 			weight: 2,
@@ -91,16 +58,6 @@
 		};
 	}	
 
-	function style_movilidad(feature) {
-		return {
-			weight: 2,
-			opacity: 1,
-			color: 'transparent',
-			dashArray: '3',
-			fillOpacity: 0.3,
-			fillColor: feature.properties.wrkmxsem_col
-		};
-	}
 	
 	function style_0(feature) {
 		return {
@@ -116,6 +73,7 @@
 	
 	function onEachFeature(feature, layer) {
 		layer.bindPopup(
+			"<h3>Datos de Dirección General de Epidemiología</h3>" +
 			"<b>municipio: </b>" +
 			feature.properties.MUNICIPIO +
 			"<br><b>entidad federativa: </b>" +
@@ -144,18 +102,6 @@
 	var infectados;
 	var infectados = new L.geoJson(XDATA, {style:style_infectados, onEachFeature: onEachFeature});
 	
-	var Rt;
-	var Rt = new L.geoJson(XDATA, {style: style_Rt, onEachFeature: onEachFeature});
-	
-	var decesos;
-	var decesos = new L.geoJson(XDATA, {style:style_decesos, onEachFeature: onEachFeature});
-	
-	var decesos_tot;
-	var decesos_tot = new L.geoJson(XDATA, {style:style_decesos_tot, onEachFeature: onEachFeature});
-	
-	var movilidad;
-	var movilidad = new L.geoJson(XDATA, {style:style_movilidad, onEachFeature: onEachFeature});
-	
 	var covidapp;
 	var covidapp = new L.geoJson(covidapp, {
 		pointToLayer: function(feature, latlng) {
@@ -176,11 +122,7 @@
 
 	var overlays = {
 		"coronavirusapoyamexico.c3.unam.mx" : covidapp,
-		"infectados activos / 100 mil personas": infectados,
-		"decesos / 100 mil personas": decesos,
-		"decesos totales": decesos_tot,
-		"incremento de contagios (Rt)": Rt,
-		"movilidad máxima en la semana pasada": movilidad
+		"Datos de la Dirección General de Epidemiología": infectados
 	};
 
 	var map = L.map('map', {
@@ -193,7 +135,8 @@
 	
 		function popup2(feature, layer) {
 			layer.bindPopup(
-				"<b>KIOSCOS y CENTROS DE SALUD <br><br> alcaldía: </b>" +
+				"<h3>Kioscos COVID-19 y Centros de Salud</h3> +
+				"alcaldía: </b>" +
 				feature.properties.alcaldia +
 				"<br><b>colonia: </b>" +
 				feature.properties.nombre +
