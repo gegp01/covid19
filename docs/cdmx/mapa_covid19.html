@@ -42,7 +42,7 @@
 
 <div id='map'></div>
 
-<script src="mun0.geojson"></script>
+<script src="mun.geojson"></script>
 <script src="coronavirusapp.geojson"></script>
 	
 <script type="text/javascript">
@@ -100,8 +100,7 @@
 		streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
 
 	var infectados;
-	// var infectados = new L.geoJson(XDATA, {style:style_infectados, onEachFeature: onEachFeature});
-	var infectados = new L.geoJson(mun0, {style:style_infectados, onEachFeature: onEachFeature});
+	var infectados = new L.geoJson(XDATA, {style:style_infectados, onEachFeature: onEachFeature});
 	
 	var covidapp;
 	var covidapp = new L.geoJson(covidapp, {
