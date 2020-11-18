@@ -59,8 +59,10 @@
 			$\mathcal{E}(covid|H)$ representa el apoyo estadístico de casos confirmados de COVID 19 en cada uno de los municipios.  Los valores son relativos a la hipótesis nula $P(covid)$ de que los casos de COVID 19 aparecen de forma aleatoria en los municipios.
 
 			<br> <br>
-			En este ejercicio consideramos a todos los pacientes activos (que inciaron síntomas desde hace 20 días o menos) y los resultados se presentan en un mapa que indica el valor de $\mathcal{E}(covid|H)$ para cada municipio. Valores mayores a 1.6 indican municipios con mas contagios de COVID 19 que el promedio nacional .
-
+			En este ejercicio consideramos a todos los pacientes activos (que inciaron síntomas desde hace 20 días o menos) y los resultados se presentan en un mapa que indica el valor de $\mathcal{E}(covid|H)$ para cada municipio.
+			Valores mayores a 1.96 indican municipios con más pacientes positivos a COVID-19 que el promedio nacional. Esto puede deberse a que se hacen pocas pruebas en el municipio, de las que muchas salen positivas.
+			Por ejemplo, la Ciudad de México tiene un valor de epsilon relativamente bajo, porque se hacen muchas pruebas y salen positivas no más que en los otros municipios.    
+			
 			<br><br>
 
 			<iframe src="covid_epsilon.html" frameborder="0" style="width:100%; height:600px; border:0; margin:auto;">municipios con más contagios que el promedio nacional, $\mathcal{E}(covid|H)$</iframe>
