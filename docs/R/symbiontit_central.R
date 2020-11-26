@@ -1,0 +1,7 @@
+source("datos_DGE.R")
+source("covid_municipios.R")
+source("Rt_municipios.R")
+source("epsilon.R")
+source("movilidad_google.R")
+source("mapa_covid19.R")
+quit("no")
