@@ -33,26 +33,12 @@
 		.leaflet-popup-tip {
 			background: royalblue;
 		}
-		
-		.sticky {
-		  position: fixed;
-		  top: 85%;
-		  left:85%;
-		  width: 7%;
-		  margin:auto;
-		  opacity:0.7;
-		}
+
 	</style>
 </head>
 	
 <body>
-
-	<div id='map'>
-		<div class="sticky">
-		    <img width=100vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="background-color: #3e484f;">
-		</div>
-	</div>
-	
+	<div id='map'></div>
 	<script src="mun.geojson"></script>
 	<script src="coronavirusapp.geojson"></script>
 	
@@ -137,9 +123,10 @@
 		)
 	}	
 	 
-	var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+	var mbAttr = '<img width=100vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="background-color: #3e484f;">' +
+	    'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+	    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+	    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 		mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ2VncCIsImEiOiJjamt1bjR6dDkwMDRvM3hvOHdwOGVlNmdqIn0.sCmUZr_hp4SZPKdcE88OYA';
 	var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr}),
 		streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
