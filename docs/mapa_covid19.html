@@ -128,12 +128,12 @@
 			"<br><b>movilidad laboral (% respecto a enero 2020): </b>" +
 			Math.round(feature.properties.wrkmxsem) +
 			"<hr><b>fecha de actualización: </b>" +
-			feature.properties.FECHA_DATOS
+			feature.properties.FECHA_DATOS +
+			'<img width=100vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png">'
 		)
 	}	
 	 
-	var mbAttr = '<div class=sticky"><img width=100vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="background-color: #3e484f;"></div><br>, ' +
-	    'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+	var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 	    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 	    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 		mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ2VncCIsImEiOiJjamt1bjR6dDkwMDRvM3hvOHdwOGVlNmdqIn0.sCmUZr_hp4SZPKdcE88OYA';
