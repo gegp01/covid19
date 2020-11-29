@@ -2,7 +2,7 @@
 <html>
 <head>
 	
-	<title>mapas covid19</title>
+	<title>mapas de COVID-19</title>
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,7 +102,7 @@
 	
 	function onEachFeature(feature, layer) {
 		layer.bindPopup(
-			"<h5>Datos de la Dirección General de Epidemiología</h5>" +
+			"<h3>Datos de la Dirección General de Epidemiología</h3>" +
 			"<b>municipio: </b>" +
 			feature.properties.MUNICIPIO +
 			"<br><b>entidad federativa: </b>" +
@@ -113,7 +113,7 @@
 			feature.properties.pobtot +
 			"<br><b>infectados activos / 100 mil personas: </b>" +
 			Math.round(feature.properties.inf15d10mil*10) +
-			"<br><b>aumento de contagios (Rt): </b>" +
+			"<br><b>aumento en contagios (Rt): </b>" +
 			Math.round(feature.properties.Rt*100)/100 +
 			"<br><b>decesos / 100 mil personas: </b>" +
 			Math.round(feature.properties.dead10mil*10) +
@@ -121,7 +121,6 @@
 			feature.properties.dead +
 			"<br><b>movilidad laboral (% respecto a enero 2020): </b>" +
 			Math.round(feature.properties.wrkmxsem) +
-
 			'<hr><p align=right><img width=100vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"></p>'
 		)
 	}	
