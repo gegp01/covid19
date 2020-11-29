@@ -106,9 +106,11 @@
 			feature.properties.MUNICIPIO +
 			"<br><b>entidad federativa: </b>" +
 			feature.properties.ENTIDAD +
-			"<br><b>habitantes en 2010: </b>" +
+			"<br>fecha de actualización: </b>" +
+			feature.properties.FECHA_DATOS +
+			"<hr><b>habitantes en 2010: </b>" +
 			feature.properties.pobtot +
-			"<hr><b>infectados activos / 100 mil personas: </b>" +
+			"<br><b>infectados activos / 100 mil personas: </b>" +
 			Math.round(feature.properties.inf15d10mil*10) +
 			"<br><b>aumento de contagios (Rt): </b>" +
 			Math.round(feature.properties.Rt*100)/100 +
@@ -118,9 +120,8 @@
 			feature.properties.dead +
 			"<br><b>movilidad laboral (% respecto a enero 2020): </b>" +
 			Math.round(feature.properties.wrkmxsem) +
-			"<hr><p align=right><b>fecha de actualización: </b>" +
-			feature.properties.FECHA_DATOS +
-			'<img width=100vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"></p>'
+
+			'<hr><p align=right><img width=100vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"></p>'
 		)
 	}	
 	 
