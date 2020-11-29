@@ -34,18 +34,37 @@
 			background: royalblue;
 		}
 		
+		 pre {
+		    background: #3e484f;
+		    border: 1px solid #ddd;
+		    // border-left: 3px solid #f36d33;
+		    color: white;
+		    page-break-inside: avoid;
+		    font-family: monospace;
+		    font-size: 15px;
+		    line-height: 1.6;
+		    margin-bottom: 1.6em;
+		    max-width: 100%;
+		    overflow: auto;
+		    padding: 1em 1em;
+		    display: block;
+		    word-wrap: break-word;
+		    }
+		
 	</style>
-
-	
 </head>
-<body>
-
-<div id='map'></div>
-
-<script src="mun.geojson"></script>
-<script src="coronavirusapp.geojson"></script>
 	
-<script type="text/javascript">
+<body>
+	<div class="sticky">
+            <img width=100vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="background-color: #3e484f;">
+	</div>
+	
+	<div id='map'></div>
+	
+	<script src="mun.geojson"></script>
+	<script src="coronavirusapp.geojson"></script>
+	
+	<script type="text/javascript">
 	
 	function style_Rt(feature) {
 		return {
@@ -185,8 +204,8 @@
 		  
 	L.control.layers(baseLayers, overlays).addTo(map);
 	
-	
-</script>
+	</script>
 
-</body>
+	
+	</body>
 </html>
