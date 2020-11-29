@@ -109,15 +109,19 @@
 			feature.properties.MUNICIPIO +
 			"<br><b>entidad federativa: </b>" +
 			feature.properties.ENTIDAD +
+			"<br><b>habitantes en 2010: </b>" +
+			feature.properties.pobtot +
 			"<br><b>infectados activos / 100 mil personas: </b>" +
 			Math.round(feature.properties.inf15d10mil*10) +
+			"<br><b><incremento en contagios (Rt): </b>" +
+			Math.round(feature.properties.Rt) +
 			"<br><b>decesos / 100 mil personas: </b>" +
 			Math.round(feature.properties.dead10mil*10) +
 			"<br><b>decesos totales: </b>" +
 			feature.properties.dead +
 			"<br><b>movilidad laboral (% respecto a enero 2020): </b>" +
 			Math.round(feature.properties.wrkmxsem) +
-			"<br><b>fecha de actualización: </b>" +
+			"<br><br><b>fecha de actualización: </b>" +
 			feature.properties.FECHA_DATOS
 		)
 	}	
