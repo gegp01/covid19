@@ -62,7 +62,7 @@
 		streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
 
 	var score;
-	var score = new L.geoJson(modelo, {style:style_1, onEachFeature: onEachFeature});
+	var score = new L.geoJson(modelo, {style:style_1});
 	
 	var baseLayers = {
 		"mapa base": grayscale,
