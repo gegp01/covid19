@@ -70,13 +70,13 @@
 	};
 
 	var overlays = {
-		"modelo 0" : score
+		"score" : score
 	};
 
 	var map = L.map('map', {
 	center: [23.634501, -102.552784],
 	zoom: 5,
-	layers: [grayscale, Rt, covidapp]
+	layers: [grayscale, score]
 	});
 		  
 	L.control.layers(baseLayers, overlays).addTo(map);
