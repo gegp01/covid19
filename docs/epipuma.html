@@ -58,14 +58,16 @@
 		
 	function onEachFeature(feature, layer) {
 			layer.bindPopup(
-				"<h4>Modelo EpI PUMA</h4>P(contagios | conectividad de personas)" +
-				"<b>municipio: </b>" +
+				"<h4>Modelo EpI PUMA: P(contagios | conectividad de personas)</h4>" +
+				"<br><b>>municipio: </b>" +
 				feature.properties.NOM_MUN +
 				"<br><b>entidad federativa: </b>" +
 				feature.properties.NOM_ENT +
 				"<br><b>score: </b>" +
 				Math.round(feature.properties.score) +
-				'<hr><p align=right><img width=50vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"></p>'
+				"<br><b>positive score: </b>" +
+				Math.round(feature.properties.positive_score) +
+				'<hr><p align=right><img width=80vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"></p>'
 			)
 		}	
 
