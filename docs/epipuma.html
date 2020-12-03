@@ -58,7 +58,7 @@
 		
 	function onEachFeature(feature, layer) {
 			layer.bindPopup(
-				"<div style='font-size:12px;'><b>modelo EpI-PUMA:</b><i>P(contagios | conectividad de personas)</i>" +
+				"<div style='font-size:12px;'><b>modelo EpI-PUMA:</b></br><i>P(contagios | conectividad de personas)</i>" +
 				"<br>Entrenamiento: 01 al 31 mayo 2020  <br>Validación: 01 al 30 junio 2020" + 
 				"<hr><b>municipio: </b>" +
 				feature.properties.NOM_MUN +
@@ -93,7 +93,7 @@
 	};
 
 	var overlays = {
-		"score" : score
+		"modelo para junio 2020" : score
 	};
 
 	var map = L.map('map', {
