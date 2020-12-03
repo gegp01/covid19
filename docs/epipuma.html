@@ -40,7 +40,6 @@
 <body>
 	<div id='map'></div>
 	<script src="epipuma.geojson"></script>
-	<script src="https://symbiontit.c3.unam.mx/mun.geojson"></script>
   
 	<script type="text/javascript">
 	
@@ -88,28 +87,7 @@
 				'<hr><p align=right><img width=80vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"></p>'
 			)
 		}
-		
-		
-
-	function onEachFeatureDGE(feature, layer) {
-		layer.bindPopup(
-			"<h3>Datos de Dirección General de Epidemiología</h3>" +
-			"<b>municipio: </b>" +
-			feature.properties.MUNICIPIO +
-			"<br><b>entidad federativa: </b>" +
-			feature.properties.ENTIDAD +
-			"<br><b>infectados activos / 100 mil personas: </b>" +
-			Math.round(feature.properties.inf15d10mil*10) +
-			"<br><b>decesos / 100 mil personas: </b>" +
-			Math.round(feature.properties.dead10mil*10) +
-			"<br><b>decesos totales: </b>" +
-			feature.properties.dead +
-			"<br><b>movilidad laboral (% respecto a enero 2020): </b>" +
-			Math.round(feature.properties.wrkmxsem) +
-			"<br><b>fecha de actualización: </b>" +
-			feature.properties.FECHA_DATOS
-		)
-	}	
+			
 
 	var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 	    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -121,17 +99,14 @@
 	var score;
 	var score = new L.geoJson(modelo, {style:style_1, onEachFeature: onEachFeature});
 		
-	var infectados;
-	var infectados = new L.geoJson(XDATA, {style:style_infectados, onEachFeature: onEachFeatureDGE});
-	
+
 	var baseLayers = {
 		"mapa base": grayscale,
 		"calles": streets
 	};
 
 	var overlays = {
-		"modelo para junio 2020" : score,
-		"infectados activos" : infectados
+		"predicción (score) para junio 2020" : score
 	};
 
 	var map = L.map('map', {
