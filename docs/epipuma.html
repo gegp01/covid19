@@ -58,9 +58,9 @@
 		
 	function onEachFeature(feature, layer) {
 			layer.bindPopup(
-				"<div style='font-size:12px;'><h4>modelo EpI-PUMA:</br><i>P(contagios | conectividad de personas)</i></h4>" +
+				"<div style='font-size:12px;'><b>modelo EpI-PUMA:</b><i>P(contagios | conectividad de personas)</i>" +
 				"<br>Entrenamiento: 01 al 31 mayo 2020  <br>Validación: 01 al 30 junio 2020" + 
-				"<br><b>municipio: </b>" +
+				"<hr><b>municipio: </b>" +
 				feature.properties.NOM_MUN +
 				"<br><b>entidad federativa: </b>" +
 				feature.properties.NOM_ENT +
