@@ -50,7 +50,7 @@
 			color: 'transparent',
 			dashArray: '3',
 			fillOpacity: 0.5,
-			fillColor: feature.properties.score_col
+			fillColor: feature.properties.semaforo
 		};
 	}
 		
@@ -72,9 +72,9 @@
 				"<div style='font-size:12px;'><b>modelo EpI-PUMA:</b></br><i>P(contagios | conectividad de personas)</i>" +
 				"<br>Entrenamiento: 01 al 31 mayo 2020  <br>Validación: 01 al 30 junio 2020" + 
 				"<hr><b>municipio: </b>" +
-				feature.properties.NOM_MUN +
+				feature.properties.MUNICIPIO +
 				"<br><b>entidad federativa: </b>" +
-				feature.properties.NOM_ENT +
+				feature.properties.ENTIDAD +
 				"<br><b>riesgo: </b>" +
 				feature.properties.riesgo +		
 				"<br><b>score: </b>" +
@@ -106,7 +106,7 @@
 	};
 
 	var overlays = {
-		"predicción (score) para junio 2020" : score
+		"categoría de riesgo para junio 2020" : score
 	};
 
 	var map = L.map('map', {
@@ -119,6 +119,5 @@
 	
 	</script>
 
-	
 	</body>
 </html>
