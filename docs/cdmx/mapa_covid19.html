@@ -149,7 +149,7 @@
 			)
 		}
 	
-	var kioscos = fetch("kioscos_cdmx.geojson")
+	var kioscos = fetch("https://symbiontit.c3.unam.mx/R/kioscos_cdmx.geojson")
 		.then(function(response) {return response.json();})
 		.then(function(data) {L.geoJSON(data, {style:style_0, onEachFeature: popup2}).addTo(map);})
 	;	
