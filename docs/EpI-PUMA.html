@@ -1,0 +1,128 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="css/spacelab/bootstrap.min.css">
+  
+  <script>
+  	MathJax = {
+  		tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+  	};
+  </script>
+  <!--script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script-->
+
+  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+	<div align="left">
+		<div style="text-align:justify; max-width: 800px;">
+				<h4 style="text-align:center;">¿Por qué la epidemia aumenta en algunos municipios <br>y en otros disminuye?</h4>
+
+			<p>Algunas personas son más susceptibles de infectarse con el coronavirus SARS-CoV-2, desarrollar síntomas de COVID-19, e ir a un centro de salud. 
+
+			La susceptibilidad de cada persona depende de su estado físico, su conducta,  ubicación geográfica y socio-demográfica. Estas características pueden sumarse o a veces cancelarse. Por ejemplo, quien trabaja en contacto con muchas personas será altamente susceptible si trabaja en un municipio en el que hay muchos contagios. En cambio, quien trabaja desde su casa puede tener una baja suceptibilidad independientemente de los contagios en el municipio en el que vive.
+
+			<br><br>
+			Para investigar todas estas posibilidades, en el Centro de Ciencias de la Complejidad se analiza la propagación de la COVID 19, utilizando minería de datos y aprendizaje de máquinas.
+
+			<a href="http://covid19.c3.unam.mx/" target="_blank">EpI-PUMA</a> es una plataforma de análisis geográfico y de redes, que utiliza un clasificador de Bayes para probar cientos de predictores de la epidemia del COVID-19. Estos predictores pueden ser de diferente naturaleza: epidemiológicos, coinfecciones y comorbilidades, socio-económicos, demográficos, de infraestructura y de movilidad de personas.
+
+			El clasificador de Bayes permite encontrar a los mejores predictores y con ellos hacer predicciones sobre el riesgo en el que se encuentran las personas. 
+
+			El proyecto es dirigido por el Dr. Christopher Stephens del Instituto de Ciencias Nucleares y el Centro de Ciencias de la Complejidad de la UNAM. <a href="http://covid19.c3.unam.mx/" target="_blank">Visita el proyecto aquí</a>.
+
+
+			<h5 align="center">¿Cómo funciona?</h5>
+			<div id ="mapa_epipuma">
+				El clasificador de Bayes analiza la distribución de una clase de interés C, por ejemplo: personas contagiadas con SARS-CoV-2, con respecto a la distribución de otra clase (predictor X).
+
+				$$P(C|X) = N_{C, X} / N_{X}$$ 
+
+				En particular, EpI-PUMA analiza la clase C que representa la mayor magnitud de la clase de interés. Es decir, de los 2543 municipios en México, se analiza la décima parte (aprox 250) que presentan el mayor número de contagios ($C_{10}$).
+	
+				De igual manera, en caso de que el predictor sea una magnitud, esta se divide en 10 categorias deciles: $X_{1}$, $X_{2}$, $X_{3}$, $X_{4}$,$X_{5}$, $X_{6}$,$X_{7}$, $X_{8}$, $X_{9}$, $X_{10}$. Así es que se comparan las siguientes probabilidades condicionales:
+
+				$$P(C_{10}| X_{1})$$
+				$$P(C_{10}| X_{2})$$
+				$$P(C_{10}| X_{3})$$
+				$$P(C_{10}| X_{4})$$
+				$$P(C_{10}| X_{5})$$
+				$$P(C_{10}| X_{6})$$
+				$$P(C_{10}| X_{7})$$
+				$$P(C_{10}| X_{8})$$
+				$$P(C_{10}| X_{9})$$
+				$$P(C_{10}| X_{10})$$
+
+			<br>
+
+			<h5 align="center">Modelo: Contagios por COVID-19 y la movilidad de las personas</h5>
+			De acuerdo con el censo poblacional, las personas en cada municipio se mueven a otros municipios, asi es que los municipios están conectados dentro de una red de transito de personas de un municipio a otro. En esta red algunos municipios están conectados a muchos municipios, mientras que otros tienen muy poca conexión con otros. Estas conexiónes pueden occurrir a grandes distancias. Por ejemplo, las personas en la alcaldía Iztapalapa en la Ciudad de México, se mueven regularmente a Tijuana, en el extremo norte de México.
+
+			<br><br>
+				[RED DE MUNICIPIOS AQUI]
+
+			<br><br>
+				La conectividad entre las personas aumentar los contagios por COVID-19 en un municipio, y probaremos esta hipotesis con EpI-PUMA. 
+
+
+				Para ello nos podemos <a href="API_epipumaCHECK!">conectar a la plataforma con la API de EpI-PUMA</a>, y probamos el modelo $$P(C_{10}| movilidad)$$
+
+			<br>
+				El resultado del modelo se describe en el mapa:
+
+			<br>
+			<iframe src="https://gegp01.github.io/covid19/epipuma.html" frameborder="0" style="width:100%; height:1000px; border:0; margin:auto;"></iframe>
+
+
+			<br>
+
+
+
+				
+
+
+
+
+
+			</div>
+
+
+
+			<br>
+
+
+			<div id = "clasificador_Bayes"><h5>Un ejemplo de Epi-species</h5>
+			Si queremos saber quienes son las personas más susceptibles de enfermar por COVID 19 podemos analizar de los datos públicos de la <a href="#Datos">Dirección General de Epidemiología</a>.
+
+			<br><br>
+			Cada día $N$ personas sospechosas de tener COVID 19 ingresan a los centros de salud en el país; y en una fracción de ellos se confirma que tienen la enfermedad. A esta fracción le llamaremos $N_{covid}$, y la probabilidad de tener covid será $$P(covid) = N_{covid}/N$$
+
+			<br><br>
+			Si tenemos una hipótesis $H$ sobre quienes son los más suceptibles de enfermar por covid, por ejemplo que los más suceptibles son de algún municipio particular. Entonces podemos probar esta hipótesis, comparando el número de personas confirmadas que son de ese municipio $H$, con el número de personas sospechosas de ese municipio, con y sin COVID 19. <br><br> $$P(covid|H) = N_{covid, H} / N_{H}$$ 
+
+			<br><br>
+			Para saber en cual municipio hay mas personas susceptibles al COVID 19 se utiliza una prueba binomial considerando que el número de casos no es el mismo en todas las pruebas de la hipótesis.
+
+			<br><br>$$\mathcal{E} (covid | H ) = N_{H} ( P(covid | H ) − P(covid) ) ·  (N_{H} P (covid) (1 − P (covid))) ^{-1/2}$$
+
+			<br><br>
+			$\mathcal{E}(covid|H)$ representa el apoyo estadístico de casos confirmados de COVID 19 en cada uno de los municipios.  Los valores son relativos a la hipótesis nula $P(covid)$ de que los casos de COVID 19 aparecen de forma aleatoria en los municipios.
+
+			<br> <br>
+			En este ejercicio consideramos a todos los pacientes activos (que inciaron síntomas desde hace 20 días o menos) y los resultados se presentan en un mapa que indica el valor de $\mathcal{E}(covid|H)$ para cada municipio. Solo se dibujan municipios con valores mayores a 1.6 ya que indican en donde es estadísticamente esperable tener casos confirmados de COVID 19.
+
+			<br><br>
+
+			<iframe src="covid_epsilon.html" frameborder="0" style="width:100%; height:1000px; border:0; margin:auto;"></iframe>
+
+		</div>
+
+			<br>
+		</div>
+	</div>
+
+</body>
+</html>
