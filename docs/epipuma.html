@@ -116,6 +116,23 @@
 	});
 		  
 	L.control.layers(baseLayers, overlays).addTo(map);
+		
+		
+		
+	var legend = L.control({position: 'topright'});
+
+		legend.onAdd = function (map) {
+			<div><table>
+				<tr><th>Categoria de riesgo</th></tr>
+				<tr style="background-color: #FF0000;"><td>Muy alto</td></tr>
+				<tr style="background-color: #FFA100;"><td>Alto</td></tr>
+				<tr style="background-color: #FFFF00;"><td>Mediano</td></tr>
+				<tr style="background-color: #AEFF00;"><td>Bajo</td></tr>
+				<tr style="background-color: #00FF00;"><td>Muy bajo</td></tr>
+		</table></div>
+		};
+
+		legend.addTo(mymap);
 	
 	</script>
 
