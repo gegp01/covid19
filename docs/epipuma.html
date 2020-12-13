@@ -116,10 +116,23 @@
 	});
 		  
 	L.control.layers(baseLayers, overlays).addTo(map);
+	
+	
+	var legend = L.control({position: 'bottomright'});
+		legend.onAdd = function(mymap){
+        var div = L.DomUtil.create('div', 'legend');
+			labels = ['<strong>Categories</strong>'],
+			categories = ["Tobacco","Whiskey","Beer","Cigar","Other"];
+			return div;
+		};
 		
+	legend.addTo(mymap);
 		
-		
-	var legend = L.control({position: 'topright'});
+	
+	</script>
+	
+	<!--script>
+		var legend = L.control({position: 'topright'});
 
 		legend.onAdd = function (map) {
 			<div><table>
@@ -133,8 +146,8 @@
 		};
 
 		legend.addTo(map);
+	</script-->
 	
-	</script>
-
+	
 	</body>
 </html>
