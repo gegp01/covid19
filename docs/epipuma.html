@@ -119,14 +119,14 @@
 	
 	
 	var legend = L.control({position: 'bottomright'});
-		legend.onAdd = function(mymap){
+		legend.onAdd = function(map){
         var div = L.DomUtil.create('div', 'legend');
 			labels = ['<strong>Categories</strong>'],
 			categories = ["Tobacco","Whiskey","Beer","Cigar","Other"];
 			return div;
 		};
 		
-	legend.addTo(mymap);
+	legend.addTo(map);
 		
 	
 	</script>
