@@ -160,7 +160,7 @@
 
 		legend.onAdd = function(map) {
 		  var div = L.DomUtil.create("div", "legend");
-		  div.innerHTML += "<h5>Contagios de COVID 19</h5>";
+		  div.innerHTML += "<h5>Contagios de</br> COVID-19</h5>";
 		  div.innerHTML += '<i style="background: #FF0000"></i><span>Muy Alto</span><br>';
 		  div.innerHTML += '<i style="background: #FFA100"></i><span>Alto</span><br>';
 		  div.innerHTML += '<i style="background: #FFFF00"></i><span>Mediano</span><br>';
@@ -168,28 +168,10 @@
 		  div.innerHTML += '<i style="background: #00FF00"></i><span>Muy Bajo</span><br>';
 		return div;
 		};
-
+		
 	legend.addTo(map);
 	
 	</script>
-	
-	<!--script>
-		var legend = L.control({position: 'topright'});
 
-		legend.onAdd = function (map) {
-			<div><table>
-				<tr><th>Categoria de riesgo</th></tr>
-				<tr style="background-color: #FF0000;"><td>Muy alto</td></tr>
-				<tr style="background-color: #FFA100;"><td>Alto</td></tr>
-				<tr style="background-color: #FFFF00;"><td>Mediano</td></tr>
-				<tr style="background-color: #AEFF00;"><td>Bajo</td></tr>
-				<tr style="background-color: #00FF00;"><td>Muy bajo</td></tr>
-		</table></div>
-		};
-
-		legend.addTo(map);
-	</script-->
-	
-	
-	</body>
+</body>
 </html>
