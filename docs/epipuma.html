@@ -180,7 +180,7 @@
 		  var div = L.DomUtil.create("div", "legend2");
   		  div.innerHTML += '<img width=80vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"/>';
 		  div.innerHTML += '<br><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>';			
-		return div;
+
 			
 			shareButton.addEventListener('click', event => {
 							  if (navigator.share) {
@@ -194,7 +194,8 @@
 							  } else {
 							    shareDialog.classList.add('is-open');
 							  }
-							});			
+							});
+		return div;
 		};
 		
 	legend2.addTo(map);
