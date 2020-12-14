@@ -77,7 +77,8 @@
 <body>
 	<div id='map'></div>
 	<script src="epipuma.geojson"></script>
-  
+	<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	
 	<script type="text/javascript">
 	
 	function style_1(feature) {
@@ -171,13 +172,13 @@
 		};
 		
 	legend.addTo(map);
-		
-		// Insertando una leyenda en el mapa
+	
+			// Insertando una leyenda en el mapa
 	var legend2 = L.control({position: 'bottomleft'});
 
 		legend2.onAdd = function(map) {
 		  var div = L.DomUtil.create("div", "legend2");
-		  div.innerHTML += '<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>';
+		  div.innerHTML += '<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>';
 		  div.innerHTML += '<img width=80vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"/>';
 		return div;
 		};
