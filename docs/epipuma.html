@@ -160,7 +160,7 @@
 
 		legend.onAdd = function(map) {
 		  var div = L.DomUtil.create("div", "legend");
-		  div.innerHTML += "<h5>Contagios de</br> COVID-19</h5>";
+		  div.innerHTML += "<h5>Predicción: <br> contagios de COVID-19</h5>";
 		  div.innerHTML += '<i style="background: #FF0000"></i><span>Muy Alto</span><br>';
 		  div.innerHTML += '<i style="background: #FFA100"></i><span>Alto</span><br>';
 		  div.innerHTML += '<i style="background: #FFFF00"></i><span>Mediano</span><br>';
@@ -177,7 +177,8 @@
 
 		legend2.onAdd = function(map) {
 		  var div = L.DomUtil.create("div", "legend2");
-		  div.innerHTML += '<hr color= gray><p align=right><img width=80vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f; margin-right:2px;"/></p>';
+		  div.innerHTML += '<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>';
+		  div.innerHTML += '<img width=80vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"/>';
 		return div;
 		};
 		
