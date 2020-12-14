@@ -156,7 +156,7 @@
 	
 	
 	// Insertando una leyenda en el mapa
-	var legend = L.control({position: 'bottomleft'});
+	var legend = L.control({position: 'left'});
 
 		legend.onAdd = function(map) {
 		  var div = L.DomUtil.create("div", "legend");
@@ -171,17 +171,7 @@
 		};
 		
 	legend.addTo(map);
-				
-		// Insertando una leyenda en el mapa
-	var legend2 = L.control({position: 'left'});
-		legend.onAdd = function(map) {
-		  var div = L.DomUtil.create("div", "legend");
-			div.innerHTML += "test";
-//		  div.innerHTML += '<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>';
-		return div;
-		};
-		
-	legend.addTo(map);
+
 	
 	</script>
 
