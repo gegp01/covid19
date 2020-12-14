@@ -80,7 +80,8 @@
 	<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	
 	<script type="text/javascript">
-	
+			
+		
 	function style_1(feature) {
 		return {
 			weight: 2,
@@ -178,23 +179,8 @@
 
 		legend2.onAdd = function(map) {
 		  var div = L.DomUtil.create("div", "legend2");
-  		  div.innerHTML += '<img width=80vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"/>';
+  		  div.innerHTML += '<img width=100vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"/>';
 		  div.innerHTML += '<br><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>';			
-
-			
-			shareButton.addEventListener('click', event => {
-							  if (navigator.share) {
-							    navigator.share({
-							      title: 'WebShare API Demo',
-							      url: 'https://gegp01.github.io/covid19/epipuma.html'
-							    }).then(() => {
-							      console.log('Thanks for sharing!');
-							    })
-							    .catch(console.error);
-							  } else {
-							    shareDialog.classList.add('is-open');
-							  }
-							});
 		return div;
 		};
 		
