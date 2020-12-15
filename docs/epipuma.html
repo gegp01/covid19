@@ -176,8 +176,6 @@
 <body>
 	<div id='map'></div>
 	<script src="epipuma.geojson"></script>
-	<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	
 	<script type="text/javascript">
 			
 		
@@ -256,7 +254,7 @@
 	
 	
 	// Insertando una leyenda en el mapa
-	var legend = L.control({position: 'topleft'});
+	var legend = L.control({position: 'bottomleft'});
 
 		legend.onAdd = function(map) {
 		  var div = L.DomUtil.create("div", "legend");
