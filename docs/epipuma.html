@@ -269,19 +269,6 @@
 		};
 		
 	legend.addTo(map);
-	
-		
-	// Insertando una leyenda en el mapa
-	var legend2 = L.control({position: 'bottomleft'});
-		
-		legend2.onAdd = function(map) {
-		  var div = L.DomUtil.create("div", "no_style");
-		  // div.innerHTML += '<img width=100vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"/>';
-		  div.innerHTML += '<img width=100vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png"/>';
-		return div;
-		};
-
-	legend2.addTo(map);
 		
 
 	// Insertando una leyenda en el mapa
@@ -298,6 +285,19 @@
 		};
 		
 	legend3.addTo(map);
+		
+
+	// Insertando una leyenda en el mapa
+	var legend2 = L.control({position: 'topleft'});
+		
+		legend2.onAdd = function(map) {
+		  var div = L.DomUtil.create("div", "no_style");
+		  // div.innerHTML += '<img width=100vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"/>';
+		  div.innerHTML += '<img width=100vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png"/>';
+		return div;
+		};
+
+	legend2.addTo(map);
 
 	
 	</script>
