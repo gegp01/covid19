@@ -225,6 +225,31 @@
 		}
 			
 
+	function popDGE(feature, layer) {
+		layer.bindPopup(
+			"<h3>Datos de la Dirección General de Epidemiología</h3>" +
+			"<b>municipio: </b>" +
+			feature.properties.MUNICIPIO +
+			"<br><b>entidad federativa: </b>" +
+			feature.properties.ENTIDAD +
+			"<br>fecha de actualización: </b>" +
+			feature.properties.FECHA_DATOS +
+			"<hr><b>habitantes en 2010: </b>" +
+			feature.properties.pobtot +
+			"<br><b>infectados activos / 100 mil personas: </b>" +
+			Math.round(feature.properties.inf15d10mil*10) +
+			"<br><b>aumento en contagios (Rt): </b>" +
+			Math.round(feature.properties.Rt*100)/100 +
+			"<br><b>decesos / 100 mil personas: </b>" +
+			Math.round(feature.properties.dead10mil*10) +
+			"<br><b>decesos totales: </b>" +
+			feature.properties.dead +
+			"<br><b>movilidad laboral (% respecto a enero 2020): </b>" +
+			Math.round(feature.properties.wrkmxsem) +
+			'<hr><p align=right><img width=100vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"></p>'
+		)
+	}	
+
 	var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 	    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 	    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -236,7 +261,7 @@
 	var score = new L.geoJson(modelo, {style:style_1, onEachFeature: onEachFeature});
 		
 	var infectados;
-	var infectados = new L.geoJson(XDATA, {style:style_infectados});
+	var infectados = new L.geoJson(XDATA, {style:style_infectados, onEachFeature: popDGE});
 		
 
 	var baseLayers = {
