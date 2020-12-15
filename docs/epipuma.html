@@ -208,9 +208,9 @@
 		
 	function onEachFeature(feature, layer) {
 			layer.bindPopup(
-				"<b>municipio: </b>" +
+				"<b>municipio: </b><br>" +
 				feature.properties.MUNICIPIO +
-				"<br><b>entidad federativa: </b>" +
+				"<br><b>entidad federativa: </b><br>" +
 				feature.properties.ENTIDAD +
 				"<br>fecha de actualización: </b>" +
 				feature.properties.FECHA_DATOS +
@@ -227,7 +227,7 @@
 				"<br><b>movilidad laboral (% respecto a enero 2020): </b>" +
 				Math.round(feature.properties.wrkmxsem) +
 				"<hr><h4>modelo:</br><i>P(contagios | conectividad de personas)</i></h4>" +
-				"<br>Entrenamiento: el mes pasado  <br>Validación: este mes" +				
+				"Entrenamiento: el mes pasado  <br>Validación: este mes" +				
 				"<br><b>riesgo: </b>" +
 				feature.properties.riesgo +		
 				"<br><b>score: </b>" +
