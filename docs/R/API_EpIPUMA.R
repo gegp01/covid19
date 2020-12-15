@@ -16,7 +16,60 @@ require(rgdal)
 require(leaflet)
 
 # DETERMINAR EL MODELO EN mod_json
-mod_json = '{"iterations": 1, "target_taxons":[{"taxon_rank":"species","value":"COVID-19 CONFIRMADO"}],"idtime":1600718392290,"apriori":false,"mapa_prob":false,"min_cells":1,"fosil":false,"lim_inf_validation":"2020-06-01","lim_sup_validation":"2020-05-30","lim_inf":"2020-05-01","lim_sup":"2020-05-31","date":false,"idtabla":"","grid_resolution":"mun","region":1,"get_grid_species":false,"with_data_score_cell":true,"with_data_freq":true,"with_data_freq_cell":true,"with_data_score_decil":true,"excluded_cells":[],"target_name":"targetGroup","covariables":[{"name":"GpoBio1","biotic":true,"merge_vars":[{"rank":"kingdom","value":"Movilidad","type":0,"level":"species"}],"group_item":1}],"decil_selected":[10]}'
+
+# asignar tiempo de entrenamiento y validación
+
+
+hoy = Sys.Date()
+
+validacion_end = as.character(hoy)
+validacion_start = as.character(hoy - 30)
+
+entrenamiento_end = as.character(validacion_30-30)
+entrenamiento_start = as.character(validacion_30-60)
+
+
+x<-list(iterations = 1
+		, target_taxons = c(list(taxon_rank = "species", value = "COVID-19 CONFIRMADO"))
+		, idtime = 1600718392290
+		, apriori = FALSE
+		, mapa_prob = FALSE
+		, min_cells = 1
+		, fosil = FALSE
+		, lim_inf_validation = validacion_start
+		, lim_sup_validation = validacion_end
+		, lim_inf = entrenamiento_start
+		, lim_sup = entrenamiento_end
+		, date = FALSE
+		, idtabla = ""
+		, grid_resolution = "mun"
+		, region = 1		
+		, get_grid_species = FALSE
+		, with_data_score_cell = TRUE
+		, with_data_freq = TRUE
+		, with_data_freq_cell = TRUE
+		, with_data_score_decil = TRUE
+		, excluded_cells = NULL 				# agregar []
+		, target_name = "targetGroup"
+		, covariables = list(name = "GpoBio1" 	# agregar []
+							, biotic = TRUE
+							, merge_vars = list(rank ="kingdom" # agregar []
+												, value = "Movilidad"
+												, type = 0
+												, level = "species")
+
+							, group_item = 1)
+		, decil_selected = list(10)
+		)
+
+X<-rjson::toJSON(x)
+#apply(do.call(rbind, strsplit(c(x, mod_json), "")), 1, function(x){length(unique(x[!x %in% "_"])) == 1})
+# CAMBIAR A MANO!!! LOS CORCHETES PARA LAS LISTAS INTERNAS [{}], Y PARA: excluded_cells = []
+X
+w = "{\"iterations\":1,\"target_taxons\":[{\"taxon_rank\":\"species\",\"value\":\"COVID-19 CONFIRMADO\"}],\"idtime\":1600718392290,\"apriori\":false,\"mapa_prob\":false,\"min_cells\":1,\"fosil\":false,\"lim_inf_validation\":\"2020-11-15\",\"lim_sup_validation\":\"2020-12-15\",\"lim_inf\":\"2020-09-16\",\"lim_sup\":\"2020-10-16\",\"date\":false,\"idtabla\":\"\",\"grid_resolution\":\"mun\",\"region\":1,\"get_grid_species\":false,\"with_data_score_cell\":true,\"with_data_freq\":true,\"with_data_freq_cell\":true,\"with_data_score_decil\":true,\"excluded_cells\":[],\"target_name\":\"targetGroup\",\"covariables\":[{\"name\":\"GpoBio1\",\"biotic\":true,\"merge_vars\":[{\"rank\":\"kingdom\",\"value\":\"Movilidad\",\"type\":0,\"level\":\"species\"}],\"group_item\":1}],\"decil_selected\":[10]}"
+
+# mod_json = '{"iterations": 1, "target_taxons":[{"taxon_rank":"species","value":"COVID-19 CONFIRMADO"}],"idtime":1600718392290,"apriori":false,"mapa_prob":false,"min_cells":1,"fosil":false,"lim_inf_validation":"2020-06-01","lim_sup_validation":"2020-05-30","lim_inf":"2020-05-01","lim_sup":"2020-05-31","date":false,"idtabla":"","grid_resolution":"mun","region":1,"get_grid_species":false,"with_data_score_cell":true,"with_data_freq":true,"with_data_freq_cell":true,"with_data_score_decil":true,"excluded_cells":[],"target_name":"targetGroup","covariables":[{"name":"GpoBio1","biotic":true,"merge_vars":[{"rank":"kingdom","value":"Movilidad","type":0,"level":"species"}],"group_item":1}],"decil_selected":[10]}'
+
 
 # Definir el verbo (la direccion url para conectarse al backend de EpI-PUMA)
 	url.epipuma = 'http://covid19.c3.unam.mx/api/dev/niche/countsTaxonsGroup'
