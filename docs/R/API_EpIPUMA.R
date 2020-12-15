@@ -25,8 +25,8 @@ hoy = Sys.Date()
 validacion_end = as.character(hoy)
 validacion_start = as.character(hoy - 30)
 
-entrenamiento_end = as.character(validacion_start-30)
-entrenamiento_start = as.character(validacion_start-60)
+entrenamiento_end = as.character(hoy-30)
+entrenamiento_start = as.character(hoy-60)
 
 
 x<-list(iterations = 1
