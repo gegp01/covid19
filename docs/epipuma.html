@@ -207,7 +207,7 @@
 		
 	function onEachFeature(feature, layer) {
 			layer.bindPopup(
-				"<div style='font-size:12px;'><b>modelo EpI-PUMA:</b></br><i>P(contagios | conectividad de personas)</i>" +
+				"<div style='font-size:12px;'>modelo:<b></br><i>P(contagios | conectividad de personas)</i></b>" +
 				"<br>Entrenamiento: 01 al 31 mayo 2020  <br>Validación: 01 al 30 junio 2020" + 
 				"<hr><b>municipio: </b>" +
 				feature.properties.MUNICIPIO +
@@ -221,9 +221,8 @@
 				Math.round(feature.properties.positive_score) +	
 				"<br><b>negative score: </b>" +
 				Math.round(feature.properties.negative_score) +				
-				"</div>" +
-				'<hr><p align=right><img width=80vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f;"/></p>'
-			)
+				"</div>"
+				)
 		}
 			
 
@@ -268,7 +267,6 @@
 		  div.innerHTML += '<i style="background: #AEFF00"></i><span>Bajo</span><br>';
 		  div.innerHTML += '<i style="background: #00FF00"></i><span>Muy Bajo</span><br>';
 		  div.innerHTML += '<i style="background: #484d51"></i><span>No hay datos</span><br>';
-//		  div.innerHTML += '<hr color= gray><p align=right><img width=80vh alt="C3" src = "https://www.c3.unam.mx/image/logo.png" style="align-text:right; background-color: #3e484f; margin-right:2px;"/></p>';
 		return div;
 		};
 		
