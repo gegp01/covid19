@@ -176,6 +176,7 @@
 <body>
 	<div id='map'></div>
 	<script src="epipuma.geojson"></script>
+	<script src="https://symbiontit.c3.unam.mx/mun.geojson"></script>
 	<script type="text/javascript">
 			
 		
@@ -234,6 +235,9 @@
 	var score;
 	var score = new L.geoJson(modelo, {style:style_1, onEachFeature: onEachFeature});
 		
+	var infectados;
+	var infectados = new L.geoJson(XDATA, {style:style_infectados, onEachFeature: onEachFeature});
+		
 
 	var baseLayers = {
 		"mapa base": grayscale,
@@ -241,7 +245,8 @@
 	};
 
 	var overlays = {
-		"categoría de riesgo para junio 2020" : score
+		"categoría de riesgo para junio 2020" : score;
+		"Infectados activos": infectados
 	};
 
 	var map = L.map('map', {
