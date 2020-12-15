@@ -75,7 +75,7 @@ w = "{\"iterations\":1,\"target_taxons\":[{\"taxon_rank\":\"species\",\"value\":
 	url.epipuma = 'http://covid19.c3.unam.mx/api/dev/niche/countsTaxonsGroup'
 
 # Hacer la petición a EpI-PUMA
-	out<-POST(url.epipuma, content_type_json(), body = json_body)
+	out<-POST(url.epipuma, content_type_json(), body = W)
 
 # INDEXAR LOS DATOS DEL MUNICIPIO CON RESPECTO A SU NUMERO DE CELDA
 # NOMBRES DE MUNICIPIOS PARA CADA CELDA
