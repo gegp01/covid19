@@ -2,10 +2,8 @@
 #
 # En este ejemplo, el modelo es P(municipios con más contagios que los demás ~ variables de conectividad)
 # La salida del modelo se asocia al indice de grid de EpiPUMA y a poligonos de cada municipio.
-# Al final de las instrucciones se genera un mapa epipuma.geojson, que se despliega en epipuma.html
+# Al final de las instrucciones se genera un mapa epipuma.geojson.
 #
-# Autor: Gabriel E. García Peña
-# Institución: Centro de Ciencias de la Complejidad (C3), Universidad Nacional Autónoma de México.
 #
 ###############3
 # LIBRERIAS NECESARIAS
