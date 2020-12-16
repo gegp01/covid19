@@ -49,18 +49,19 @@ x<-list(iterations = 1
 		, with_data_freq = TRUE
 		, with_data_freq_cell = TRUE
 		, with_data_score_decil = TRUE
-		, excluded_cells = NULL 				# agregar []
+		, excluded_cells = NULL # agregar []
 		, target_name = "targetGroup"
-		, covariables = list(name = "GpoBio1" 	# agregar []
+		, covariables = list(name = "GpoBio1"# agregar []
 							, biotic = TRUE
 							, merge_vars = list(rank ="kingdom" # agregar []
-												, value = "Movilidad"
-												, type = 0
-												, level = "species")
+									    , value = "Movilidad"
+									    , type = 0
+									    , level = "species")
 
 							, group_item = 1)
 		, decil_selected = list(10)
 		)
+
 
 X<-rjson::toJSON(x)
 #apply(do.call(rbind, strsplit(c(x, mod_json), "")), 1, function(x){length(unique(x[!x %in% "_"])) == 1})
