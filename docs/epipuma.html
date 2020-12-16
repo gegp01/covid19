@@ -175,8 +175,8 @@
 	
 <body>
 	<div id='map'></div>
-	<!--script src="epipuma.geojson"></script>
-	<script src="https://symbiontit.c3.unam.mx/mun.geojson"></script-->
+	<script src="epipuma.geojson"></script>
+	<!--script src="https://symbiontit.c3.unam.mx/mun.geojson"></script-->
 	
 	<script src="mun.geojson"></script>
 	<script type="text/javascript">
@@ -253,6 +253,9 @@
 	var infectados;
 	var infectados = new L.geoJson(XDATA, {style:style_infectados, onEachFeature: onEachFeature});
 		
+	var score2;
+	var score2 = new L.geoJson(modelo, {style:style_1, onEachFeature: onEachFeature});
+		
 
 	var baseLayers = {
 		"mapa base": grayscale,
@@ -261,7 +264,8 @@
 
 	var overlays = {
 		"predicción para este mes" : score,
-		"casos activos de COVID-19 / 100 mil hab": infectados
+		"casos activos de COVID-19 / 100 mil hab": infectados,
+		"prediccion 2" : score2
 	};
 
 	var map = L.map('map', {
