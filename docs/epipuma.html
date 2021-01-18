@@ -252,13 +252,16 @@
 				Math.round(feature.properties.contagios_e) +
 				"<br><b>contagios en periodo de validación: </b>" +
 				Math.round(feature.properties.contagios_v) +
-				"<hr><br><b>P(H:{1,1}) = </b>" +
+				"<hr><b>P(H:{1,1}) = </b>" +
 				Math.round(feature.properties.P_e_p*100)/100 +
 				"<br><b>P(H:{0,1}) = </b>" +
 				Math.round(feature.properties.P_e_nop*100)/100 +
 				"<br><b>P(H:{1,0}) = </b>" +
 				Math.round(feature.properties.P_noe_p*100)/100 +
-				"<br><b>P(H:{1,1} | clase X) = </b>" +
+				"<br><b>P(H:{0,0}) = </b>" +
+				Math.round(feature.properties.P_noe_nop*100)/100 +
+
+				"<hr><b>P(H:{1,1} | clase X) = </b>" +
 				Math.round(feature.properties.P_e_p_x*100)/100 +
 				"<br><b>P(H:{1,1} | no clase X) = </b>" +
 				Math.round(feature.properties.P_e_p_nox*100)/100 +
