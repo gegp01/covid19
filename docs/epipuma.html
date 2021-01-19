@@ -244,15 +244,16 @@
 		
 	function onEachFeature(feature, layer) {
 			layer.bindPopup(
-				"<b>clave del municipio: </b>" +
+				"<b>Clave del municipio: </b>" +
 				feature.properties.municipio +		
-				"<br><b>contagios en primer periodo: </b>" +
+				"<br><b>(p) contagios en primer periodo: </b>" +
 				feature.properties.contagios_p +		
-				"<br><b>contagios en periodo de entrenamiento: </b>" +
+				"<br><b>(e) contagios en periodo de entrenamiento: </b>" +
 				Math.round(feature.properties.contagios_e) +
-				"<br><b>contagios en periodo de validación: </b>" +
+				"<br><b>(v) contagios en periodo de validación: </b>" +
 				Math.round(feature.properties.contagios_v) +
-				"<hr><b>P(H:{1,1}) = </b>" +
+				"<hr><h3>H:{e,p}</h3>" +
+				"<b>P(H:{1,1}) = </b>" +
 				Math.round(feature.properties.P_e_p*100)/100 +
 				"<br><b>P(H:{0,1}) = </b>" +
 				Math.round(feature.properties.P_e_nop*100)/100 +
@@ -260,13 +261,19 @@
 				Math.round(feature.properties.P_noe_p*100)/100 +
 				"<br><b>P(H:{0,0}) = </b>" +
 				Math.round(feature.properties.P_noe_nop*100)/100 +
-
 				"<hr><b>P(H:{1,1} | clase X) = </b>" +
-				Math.round(feature.properties.P_e_p_x*100)/100 +
+				Math.round(feature.properties.P_e_p_11_x*100)/100 +
+				"<br><b>P(H:{1,0} | clase X) = </b>" +
+				Math.round(feature.properties.P_e_p_10_x*100)/100 +
 				"<br><b>P(H:{1,1} | no clase X) = </b>" +
-				Math.round(feature.properties.P_e_p_nox*100)/100 +
-				"<br><b>score = </b>" +
-				Math.round(feature.properties.score*100)/100							
+				Math.round(feature.properties.P_e_p_11_nox*100)/100 +
+				"<br><b>P(H:{1,0} | no clase X) = </b>" +
+				Math.round(feature.properties.P_e_p_10_nox*100)/100 +
+				"<hr><b>score (H:{1,1}) = </b>" +
+				Math.round(feature.properties.score_11*100)/100 +
+				"<br><b>score (H:{1,0}) = </b>" +
+				Math.round(feature.properties.score_10*100)/100							
+							
 				)
 		}
 				
@@ -304,7 +311,7 @@
 		"primer periodo" : prior,
 		"periodo de entrenamiento" : entrenamiento,
 		"periodo de validación" : validacion,
-		"municipios con alta conectividad" : clase_X
+		"municipios con mucha movilidad interna" : clase_X
 		//"Casos activos de COVID-19 / 100 mil hab": infectados
 	};
 
@@ -324,7 +331,7 @@
 
 		  div.innerHTML += '<h5 style = "text-align:left;">Municipios</h5>';
 		  div.innerHTML += '<i style="background: #FF0000"></i><span>con muchos contagios acumulados en el periodo</span><br>';
-		  div.innerHTML += '<i style="background: royalblue"></i><span>conectados con muchos municipios (clase X)</span><br>';
+		  div.innerHTML += '<i style="background: royalblue"></i><span>con mucha movilidad de personas (clase X)</span><br>';
 		div.innerHTML += '<i style="background: #8e5dba"></i><span>municipios de la clase X con muchos contagios en el periodo</span><br>';
 		return div;
 		};
