@@ -256,9 +256,9 @@
 				"<b>P(H:{1,1}) = </b>" +
 				Math.round(feature.properties.P_e_p*100)/100 +
 				"<br><b>P(H:{0,1}) = </b>" +
-				Math.round(feature.properties.P_e_nop*100)/100 +
-				"<br><b>P(H:{1,0}) = </b>" +
 				Math.round(feature.properties.P_noe_p*100)/100 +
+				"<br><b>P(H:{1,0}) = </b>" +
+				Math.round(feature.properties.P_e_nop*100)/100 +
 				"<br><b>P(H:{0,0}) = </b>" +
 				Math.round(feature.properties.P_noe_nop*100)/100 +
 				"<hr><b>P(H:{1,1} | clase X) = </b>" +
@@ -272,8 +272,10 @@
 				"<hr><b>score (H:{1,1}) = </b>" +
 				Math.round(feature.properties.score_11*100)/100 +
 				"<br><b>score (H:{1,0}) = </b>" +
-				Math.round(feature.properties.score_10*100)/100							
-							
+				Math.round(feature.properties.score_10*100)/100	//+
+				//"<hr><h3>validación</h3>" +
+				//"<b>P(v = 1 | e = 0) = N_v1_e0 / N_e0 = </b>" +		
+				//Math.round(feature.properties.P_v_e_10*100)/100			
 				)
 		}
 				
