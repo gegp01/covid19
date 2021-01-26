@@ -357,7 +357,7 @@
 	var nombres = new L.geoJson(modelo, {style:style_nms, onEachFeature:onEachFeature});
 
 	var score_m1;
-	var score_m1 = new L.geoJson(modelo, {style:style_score_m1, onEachFeature:onEachFeature});
+	var score_m1 = new L.geoJson(modelo, {style:style_score_m1});
 
 	var score_m2;
 	var score_m2 = new L.geoJson(modelo, {style:style_score_m2});
@@ -408,7 +408,7 @@
 	var overlays = {
 		"Nombres de municipios" : nombres,	
 		"Entrenamiento marzo 2020" : H1_m1,		
-		"Predicción marzo 2020" : score_m1,
+		"Predicción abril 2020" : score_m1,
 		"Validación abril 2020" : H2_m1,
 		"Entrenamiento abril 2020" : H1_m2,		
 		"Predicción mayo 2020" : score_m2,
