@@ -191,8 +191,9 @@
 			opacity: 1,
 			color: 'transparent',
 			dashArray: '3',
-			fillOpacity: 0.5,
+			fillOpacity: 0.5, //feature.properties.score_m1/100,
 			fillColor: feature.properties.score_m1_C10
+
 		};
 	}
 
@@ -232,18 +233,6 @@
 	}
 
 
-	function style_H1_m1(feature) {
-		return {
-			weight: 2,
-			opacity: 1,
-			color: 'transparent',
-			dashArray: '3',
-			fillOpacity: 0.5,
-			fillColor: feature.properties.H1_m1_col
-		};
-	}
-
-
 	function style_H2_m1(feature) {
 		return {
 			weight: 2,
@@ -254,19 +243,6 @@
 			fillColor: feature.properties.H2_m1_col
 		};
 	}
-
-
-	function style_H1_m2(feature) {
-		return {
-			weight: 2,
-			opacity: 1,
-			color: 'transparent',
-			dashArray: '3',
-			fillOpacity: 0.5,
-			fillColor: feature.properties.H1_m2_col
-		};
-	}
-
 
 	function style_H2_m2(feature) {
 		return {
@@ -279,17 +255,6 @@
 		};
 	}
 
-	function style_H1_m3(feature) {
-		return {
-			weight: 2,
-			opacity: 1,
-			color: 'transparent',
-			dashArray: '3',
-			fillOpacity: 0.5,
-			fillColor: feature.properties.H1_m3_col
-		};
-	}
-
 	function style_H2_m3(feature) {
 		return {
 			weight: 2,
@@ -298,17 +263,6 @@
 			dashArray: '3',
 			fillOpacity: 0.5,
 			fillColor: feature.properties.H2_m3_col
-		};
-	}
-
-	function style_H1_m4(feature) {
-		return {
-			weight: 2,
-			opacity: 1,
-			color: 'transparent',
-			dashArray: '3',
-			fillOpacity: 0.5,
-			fillColor: feature.properties.H1_m4_col
 		};
 	}
 
@@ -368,26 +322,26 @@
 	var score_m4;
 	var score_m4 = new L.geoJson(modelo, {style:style_score_m4});
 
-	var H1_m1;
-	var H1_m1 = new L.geoJson(modelo, {style:style_H1_m1});
+	//var H1_m1;
+	//var H1_m1 = new L.geoJson(modelo, {style:style_H1_m1});
 
 	var H2_m1;
 	var H2_m1 = new L.geoJson(modelo, {style:style_H2_m1});
 
-	var H1_m2;
-	var H1_m2 = new L.geoJson(modelo, {style:style_H1_m2});
+	//var H1_m2;
+	//var H1_m2 = new L.geoJson(modelo, {style:style_H1_m2});
 
 	var H2_m2;
 	var H2_m2 = new L.geoJson(modelo, {style:style_H2_m2});
 
-	var H1_m3;
-	var H1_m3 = new L.geoJson(modelo, {style:style_H1_m3});
+	//var H1_m3;
+	//var H1_m3 = new L.geoJson(modelo, {style:style_H1_m3});
 
 	var H2_m3;
 	var H2_m3 = new L.geoJson(modelo, {style:style_H2_m3});
 
-	var H1_m4;
-	var H1_m4 = new L.geoJson(modelo, {style:style_H1_m4});
+	//var H1_m4;
+	//var H1_m4 = new L.geoJson(modelo, {style:style_H1_m4});
 
 	var H2_m4;
 	var H2_m4 = new L.geoJson(modelo, {style:style_H2_m4});
@@ -407,24 +361,24 @@
 
 	var overlays = {
 		"Nombres de municipios" : nombres,	
-		"Entrenamiento marzo 2020" : H1_m1,		
-		"Predicción abril 2020" : score_m1,
-		"Validación abril 2020" : H2_m1,
-		"Entrenamiento abril 2020" : H1_m2,		
-		"Predicción mayo 2020" : score_m2,
-		"Validación mayo 2020" : H2_m2,
-		"Entrenamiento mayo 2020" : H1_m3,		
-		"Predicción junio 2020" : score_m3,
-		"Validación junio 2020" : H2_m3,
-		"Entrenamiento junio 2020:" : H1_m4,		
-		"Predicción julio 2020" : score_m4,
-		"Validación julio 2020" : H2_m4
+		//"observación marzo 2020" : H1_m1,		
+		"<b>predicción abril 2020</b>" : score_m1,
+		"observación abril 2020" : H2_m1,
+		//"Entrenamiento abril 2020" : H1_m2,		
+		"<b>predicción mayo 2020</b>" : score_m2,
+		"observación mayo 2020" : H2_m2,
+		//"Entrenamiento mayo 2020" : H1_m3,		
+		"<b>predicción junio 2020</b>" : score_m3,
+		"observación junio 2020" : H2_m3,
+		//"Entrenamiento junio 2020:" : H1_m4,		
+		"<b>predicción julio 2020</b>" : score_m4,
+		"observación julio 2020" : H2_m4
 	}
 
 	var map = L.map('map', {
 	center: [23.634501, -102.552784],
 	zoom: 5,
-	layers: [grayscale, H1_m1]
+	layers: [grayscale, score_m1]
 	});
 		  
 	
@@ -436,8 +390,6 @@
 		  var div = L.DomUtil.create("div", "legend");
 
 		  	div.innerHTML += '<h5 style = "text-align:left;">Municipios</h5>';
-
-			div.innerHTML += '<i style="background: #62219b"></i><span>Datos de entrenamiento: clase H:{p = 0, e = 1}</span><br>';
 			div.innerHTML += '<i style="background: royalblue"></i><span>Predicción EpI-PUMA:score más alto</span><br>';
 		  		  div.innerHTML += '<i style="background: #FF0000"></i><span>Datos de validación: clase H:{e = 0, v = 1}</span><br>';
 		return div;
