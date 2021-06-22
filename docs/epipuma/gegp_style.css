@@ -70,6 +70,13 @@
     		color:azure;
     	}
 
+    	 .card-body {
+    		background:transparent;
+    		opacity: 1;
+    		align-self:center;
+    		color:darkslategrey;
+    	}
+
 
 		ul {
 			font-size:15px;
